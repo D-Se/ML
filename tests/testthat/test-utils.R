@@ -1,3 +1,3 @@
 test_that("multiplication works", {
-  expect_equal(NULL %||% 5, 5)
+  expect_equal(NULL %null% 5, 5)
 })

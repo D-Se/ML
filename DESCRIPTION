@@ -21,8 +21,6 @@ Imports:
     lifecycle,
     Rcpp,
     targets (>= 0.10.0)
-Depends: 
-    tidymodels (>= 0.1.4)
 Suggests: 
     rmarkdown,
     knitr,

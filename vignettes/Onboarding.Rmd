@@ -1,0 +1,35 @@
+---
+title: "Onboarding"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Onboarding}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## packages
+
+This is a list of resources for the R packages used in this project.
+
+-   [targets](https://books.ropensci.org/targets/)
+
+-   [rmarkdown](https://bookdown.org/yihui/rmarkdown/)
+
+-   [tidymodels](https://www.tmwr.org/)
+
+-   [tidymodels Feature Engineering & Selection](https://bookdown.org/max/FES/)
+
+## books
+
+-   [Deep Learning](https://github.com/janishar/mit-deep-learning-book-pdf/tree/master/complete-book-pdf)
+
+## models
+
+A list of useful resources for the models developed in the project.
