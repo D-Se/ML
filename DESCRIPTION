@@ -1,0 +1,16 @@
+Package: ML
+Title: Analysis and utility tools for Machine Learning
+Version: 0.0.1
+Date: 2022-02-19
+Authors@R:
+    c(person(given = "Donald",
+             family = "Seinen",
+             role = c("aut", "cre"),
+             email = "2869830202@qq.com",
+             comment = c(ORCID = "0000-0002-4343-5851"))
+  )
+Maintainer: Donald Seinen <2869830202@qq.com>
+Description: Nanjing University Spring 2022 Machine Learning 01 class (020205D17).
+License: GPL (>= 2)
+Encoding: UTF-8
+RoxygenNote: 7.1.2
