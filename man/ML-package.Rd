@@ -6,6 +6,8 @@
 \alias{ML-package}
 \title{ML: Analysis and utility tools for Machine Learning}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 Nanjing University Spring 2022 Machine Learning 01 class (020205D17).
 }
 \seealso{

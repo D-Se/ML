@@ -1,5 +1,4 @@
-
-# ML
+# ML <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 [![R build status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://github.com/D-Se/ML/actions)

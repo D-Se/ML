@@ -1,0 +1,8 @@
+bibentry(
+  "Misc",
+  title = "Applied Machine Learning in R: {ML}",
+  author = "Donald Seinen",
+  year = 2022,
+  doi = "",
+  school = "Nanjing University"
+)
