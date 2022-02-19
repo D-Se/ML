@@ -14,3 +14,5 @@ Description: Nanjing University Spring 2022 Machine Learning 01 class (020205D17
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.1.2
+URL: https://github.com/D-Se/ML
+BugReports: https://github.com/D-Se/ML/issues
