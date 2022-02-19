@@ -7,23 +7,25 @@
 [![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
 <!-- badges: end -->
 
-The goal of ML is to ...
 
-## Installation
+> Sincerity with Aspiration, Perseverance with Integrity
 
-You can install the development version of ML from [GitHub](https://github.com/) with:
+This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.
 
+## Quick start
+
+To start modelling, use
 ``` r
 # install.packages("devtools")
 devtools::install_github("D-Se/ML")
 ```
 
-## Example
+## Getting help
+- See `vignette("ML")` for an in-depth introduction of the course and the team.
+- For team members, see `vignette("Onboarding")`. 
+- See `vignette("Planning")` for planning and continuous integration details.
 
-This is a basic example which shows you how to solve a common problem:
+## Project visualization
 
-``` r
-library(ML)
-## basic example code
-```
+[//]: # (Insert targets workflow visualization here)
 
