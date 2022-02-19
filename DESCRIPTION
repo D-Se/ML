@@ -16,3 +16,20 @@ Encoding: UTF-8
 RoxygenNote: 7.1.2
 URL: https://github.com/D-Se/ML
 BugReports: https://github.com/D-Se/ML/issues
+Imports: 
+    box (>= 1.1.0),
+    lifecycle,
+    Rcpp,
+    targets (>= 0.10.0)
+Depends: 
+    tidymodels (>= 0.1.4)
+Suggests: 
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0),
+    covr
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+LinkingTo: 
+    Rcpp

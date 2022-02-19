@@ -1,0 +1,29 @@
+---
+title: "ML"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Task}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ML)
+```
+
+## Group Members
+
+| Student nr | Name          | School                 |
+|------------|---------------|------------------------|
+| mg20145007 | Donald Seinen | Information Management |
+|            |               |                        |
+|            |               |                        |
+
+
