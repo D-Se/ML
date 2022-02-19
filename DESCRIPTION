@@ -23,8 +23,7 @@ Imports:
     lifecycle,
     Rcpp,
     rlang (>= 1.0.1),
-    rstudioapi (>= 0.13),
-    targets (>= 0.10.0)
+    rstudioapi (>= 0.13)
 Suggests: 
     rmarkdown,
     knitr,
@@ -35,3 +34,5 @@ VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 LinkingTo: 
     Rcpp
+Depends: 
+    R (>= 4.0)

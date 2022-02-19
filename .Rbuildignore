@@ -3,3 +3,5 @@
 ^\.Rproj\.user$
 ^codecov\.yml$
 ^\.github$
+^_targets.R
+^Report.Rmd
