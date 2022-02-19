@@ -2,6 +2,7 @@
 # ML
 
 <!-- badges: start -->
+[![R build status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://github.com/D-Se/ML/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
 <!-- badges: end -->
