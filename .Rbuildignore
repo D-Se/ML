@@ -6,3 +6,4 @@
 ^_targets.R
 ^Report.Rmd
 ^_targets
+^README\.Rmd$
