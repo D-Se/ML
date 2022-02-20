@@ -38,3 +38,6 @@ vignettes/*.pdf
 .Rdata
 .DS_Store
 inst/doc
+
+
+_targets

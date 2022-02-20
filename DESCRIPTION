@@ -17,12 +17,12 @@ RoxygenNote: 7.1.2
 URL: https://github.com/D-Se/ML
 BugReports: https://github.com/D-Se/ML/issues
 Imports: 
-    box (>= 1.1.0),
     cli (>= 3.2.0),
     crayon (>= 1.5.0),
     lifecycle,
     Rcpp,
     rlang (>= 1.0.1),
+    rsample,
     rstudioapi (>= 0.13)
 Suggests: 
     rmarkdown,

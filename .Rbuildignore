@@ -5,3 +5,4 @@
 ^\.github$
 ^_targets.R
 ^Report.Rmd
+^_targets
