@@ -10,14 +10,13 @@ box::use(
 #tar_option_set(packages = c("rlang"))
 
 #' key project modelling pipeline
-#' 
 list(
   ### TODO: data input step
   ### TODO: validate data step
   ### TODO: data preparation step
   tgt(
     data, {
-      e = new.env()
+      e <- new.env()
       add_splits(e, mtcars, prop = .75)
     }
   )

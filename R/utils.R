@@ -2,7 +2,7 @@
 
 #' Null-coalescing operator
 #' @noRd
-`%null%` <- function(x, y) if(is.null(x)) y else x
+`%null%` <- function(x, y) if (is.null(x)) y else x
 
 text_col <- function(x) {
   # If RStudio not available, messages already printed in black
