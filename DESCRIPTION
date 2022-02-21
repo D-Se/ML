@@ -21,9 +21,9 @@ Imports:
     crayon (>= 1.5.0),
     lifecycle,
     Rcpp,
+    recipes (>= 0.2.0),
     rlang (>= 1.0.1),
-    rsample,
-    rstudioapi (>= 0.13)
+    rsample (>= 0.1.1)
 Suggests: 
     rmarkdown,
     knitr,

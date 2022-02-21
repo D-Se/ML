@@ -13,7 +13,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
 <!-- badges: end -->
 
-> Sincerity with Aspiration, Perseverance with Integrity
+<center>
+
+*Sincerity with Aspiration, Perseverance with Integrity*
+
+</center>
 
 This repository contains analysis, utilities and workflows for the *NJU
 020205D17 Machine Learning* course.
@@ -23,7 +27,6 @@ This repository contains analysis, utilities and workflows for the *NJU
 To start modelling, use
 
 ``` r
-# install.packages("devtools")
 devtools::install_github("D-Se/ML")
 ```
 
@@ -36,14 +39,5 @@ devtools::install_github("D-Se/ML")
     details.
 
 ## Project visualization
-
-``` r
-### TODO: annotate visnetwork with time of last model run
-#library(ggplot2)
-
-targets::tar_visnetwork(
-  label = "time", 
-  )
-```
 
 <img src="man/figures/README-pipeline-1.png" width="100%" angle=90 style="display: block; margin: auto;" />

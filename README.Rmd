@@ -21,8 +21,11 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
 <!-- badges: end -->
 
+<center>
 
-> Sincerity with Aspiration, Perseverance with Integrity
+*Sincerity with Aspiration, Perseverance with Integrity*
+
+</center>
 
 This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.
 
@@ -30,7 +33,6 @@ This repository contains analysis, utilities and workflows for the *NJU 020205D1
 
 To start modelling, use
 ``` r
-# install.packages("devtools")
 devtools::install_github("D-Se/ML")
 ```
 
@@ -44,11 +46,11 @@ devtools::install_github("D-Se/ML")
 [//]: # (Insert targets workflow visualization here)
 
 
-```{r pipeline, eval=TRUE, fig.align='center', out.extra='angle=90'}
+```{r pipeline, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90'}
 ### TODO: annotate visnetwork with time of last model run
 #library(ggplot2)
 
 targets::tar_visnetwork(
-  label = "time", 
-  )
+  label = "time"
+)
 ```
