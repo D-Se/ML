@@ -40,4 +40,8 @@ devtools::install_github("D-Se/ML")
 
 ## Project visualization
 
+    #> Registered S3 method overwritten by 'tune':
+    #>   method                   from   
+    #>   required_pkgs.model_spec parsnip
+
 <img src="man/figures/README-pipeline-1.png" width="100%" angle=90 style="display: block; margin: auto;" />
