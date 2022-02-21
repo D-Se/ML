@@ -62,7 +62,12 @@ list(
           recipe(compressive_strength ~ ., data = train) |>
           step_normalize(all_predictors()) |>
           step_poly(all_predictors()) |> 
-          step_interact(~ all_predictors():all_predictors())
+          step_interact(~ all_predictors():all_predictors()),
+        keras_recipe = 
+          recipe(compressive_strength ~ ., data = train) |> 
+          step_center(all_predictors(), -all_outcomes()) |>
+          step_scale(all_predictors(), -all_outcomes()) |>
+          prep()
       )
   ),
   ### TODO: model specification: make this environment variable

@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 
 This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.
 
-## Quick start
+## Quick start 
 
 To start modelling, use
 ``` r
@@ -46,7 +46,7 @@ devtools::install_github("D-Se/ML")
 [//]: # (Insert targets workflow visualization here)
 
 
-```{r pipeline, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90'}
+```{r pipeline, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90'}
 ### TODO: annotate visnetwork with time of last model run
 #library(ggplot2)
 

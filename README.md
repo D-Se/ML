@@ -22,7 +22,7 @@ coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://
 This repository contains analysis, utilities and workflows for the *NJU
 020205D17 Machine Learning* course.
 
-## Quick start
+## Quick start 
 
 To start modelling, use
 
@@ -39,5 +39,9 @@ devtools::install_github("D-Se/ML")
     details.
 
 ## Project visualization
+
+    #> Registered S3 method overwritten by 'tune':
+    #>   method                   from   
+    #>   required_pkgs.model_spec parsnip
 
 <img src="man/figures/README-pipeline-1.png" width="100%" angle=90 style="display: block; margin: auto;" />
