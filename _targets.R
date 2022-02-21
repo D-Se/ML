@@ -16,8 +16,23 @@ library(future)
 tgt <- tar_target
 
 data(concrete, package = "modeldata")
-tar_option_set(packages = c("rlang", "tidymodels", "tidyverse", "ggplot2"))
-#' key project modelling pipeline
+#tar_option_set(packages = c("rlang", "tidyverse", "tidymodels"))
+
+tar_option_set(packages = c(
+  #' @note tidymodels interface
+  "rsample", "recipes", "parsnip", "tune", "finetune", "yardstick",
+  "workflows", "workflowsets",
+  
+  #' @note data wrangling: tidyverse
+  "dplyr", "ggplot2", "rlang", "forcats",
+  
+  #' @note neural network
+  "keras", "glmnet", "earth", "kernlab",
+  "kknn", "rpart",
+  
+  #' @note tree models
+  "ranger", "xgboost", "baguette", "rules"
+))
 
 tidymodels::tidymodels_prefer()
 
@@ -102,7 +117,8 @@ list(
         cubist_rules(committees = tune(), neighbors = tune()) |>
         set_engine("Cubist")
     )
-  }, packages = c("earth", "xgboost", "kknn", "kernlab", "parsnip", "baguette", "rules", "Cubist")),
+  }
+  ),
   tgt(flows, {
     list(
       #normalized = workflow_set(
@@ -117,11 +133,11 @@ list(
           simple = workflow_variables(compressive_strength,
                                       everything())
           ),
-        list(#MARS = models$mars_spec,
-             CART = models$cart_spec,
+        list(MARS = models$mars_spec)#,
+             #CART = models$cart_spec,
              ### FIXME: CART_bagged is currently bugged
              #CART_bagged = models$bag_cart_spec,
-             RF = models$rf_spec)#,
+             #RF = models$rf_spec)#,
              #boosting = models$xgb_spec,
              #Cubist = models$cubist_spec)
       )#,
@@ -134,7 +150,8 @@ list(
     ) |>
       bind_rows() |>
       mutate(wflow_id = gsub("(simple_)|(normalized_)", "", wflow_id))
-  }, packages = c("workflowsets", "workflows", "dplyr")),
+  }
+  ),
   tgt(control, {
     list(
       grid = 
@@ -160,7 +177,8 @@ list(
         control = control$race,
         verbose = TRUE
       )
-  }, packages = c("workflowsets", "finetune")),
+  }#, packages = c("workflowsets", "finetune")
+  ),
   #tgt(ranking, {
   #  results |>
    #   filter(.metric == "rmse") |>
@@ -180,12 +198,12 @@ list(
   }),
   tgt(winners_pre_test, {
     results |>
-      extract_workflow_set_result("RF") |>
+      extract_workflow_set_result("MARS") |>
       select_best(metric = "rmse")
   }),
   tgt(winners_post_test, {
     results |>
-      extract_workflow("RF") |>
+      extract_workflow("MARS") |>
       finalize_workflow(winners_pre_test) |>
       last_fit(split = init)
   }),
@@ -200,7 +218,54 @@ list(
       geom_abline(color = "gray50", lty = 2) + 
       geom_point(alpha = .5) +
       labs(x = "observed", y = "predicted")
-  }, packages = c("tune", "ggplot2"))
+  }
+  ),
+  
+  
+  
+  
+  
+  tar_target(
+    keras_rec,
+    prepare_recipe(train),
+    format = "qs",
+    deployment = "main"
+  ),
+  tar_target(
+    units,
+    c(16, 32),
+    deployment = "main"
+  ),
+  tar_target(
+    act,
+    c("relu", "sigmoid"),
+    deployment = "main"
+  ),
+  tar_target(
+    run,
+    test_model(init, keras_rec, units1 = units, act1 = act),
+    pattern = cross(units, act),
+    format = "fst_tbl"
+  ),
+  tar_target(
+    best_run,
+    run %>%
+      top_n(1, accuracy) %>%
+      head(1),
+    format = "fst_tbl",
+    deployment = "main"
+  ),
+  tar_target(
+    best_model,
+    train_best_model(best_run, keras_rec),
+    format = "keras"
+  )
+  
+  
+  
+  
+  
+  
   ### TODO: data pre-processing step [recipe specification]
   ### TODO: workflowsets step for dependent models [workflowsets]
   ### TODO: hyperparameter tuning step {{ control grid // finetune ?}}

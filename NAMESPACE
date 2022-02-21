@@ -2,6 +2,12 @@
 
 export(ML_add)
 export(add_splits)
+export(define_model)
+export(prepare_recipe)
+export(test_accuracy)
+export(test_model)
+export(train_best_model)
+export(train_model)
 importFrom(Rcpp,sourceCpp)
 importFrom(lifecycle,deprecated)
 useDynLib(ML, .registration = TRUE)
