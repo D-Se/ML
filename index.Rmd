@@ -1,0 +1,9 @@
+---
+author: "Donald Seinen"
+date: "`r Sys.Date()`"
+output:
+  bookdown::gitbook: default
+documentclass: book
+---
+
+# targets-parameterized-bookdown

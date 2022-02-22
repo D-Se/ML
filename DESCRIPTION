@@ -17,9 +17,11 @@ RoxygenNote: 7.1.2
 URL: https://github.com/D-Se/ML
 BugReports: https://github.com/D-Se/ML/issues
 Imports: 
+    bookdown (>= 0.24),
     cli (>= 3.2.0),
     crayon (>= 1.5.0),
     dplyr (>= 1.0.8),
+    ggplot2 (>= 3.3.5),
     keras (>= 2.8.0),
     lifecycle,
     parsnip (>= 0.1.7),

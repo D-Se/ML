@@ -10,3 +10,5 @@
 ^doc$
 ^Meta$
 ^dev
+^index.Rmd
+^_bookdown.yml

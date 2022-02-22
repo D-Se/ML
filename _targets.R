@@ -8,6 +8,7 @@
 # )
 
 library(targets)
+library(tarchetypes)
 library(ML)
 library(future)
 #library(future.callr)
@@ -25,13 +26,18 @@ tar_option_set(packages = c(
   
   #' @note data wrangling: tidyverse
   "dplyr", "ggplot2", "rlang", "forcats",
+  # TODO replace readr and tidyr
+  "readr", "tidyr",
   
   #' @note neural network
   "keras", "glmnet", "earth", "kernlab",
   "kknn", "rpart",
   
   #' @note tree models
-  "ranger", "xgboost", "baguette", "rules"
+  "ranger", "xgboost", "baguette", "rules",
+  
+  #' @note reporting
+  "bookdown"
 ))
 
 tidymodels::tidymodels_prefer()
@@ -224,49 +230,102 @@ list(
       geom_point(alpha = .5) +
       labs(x = "observed", y = "predicted")
   }
-  ),
-  
-  
-  
-  
-  
-  tar_target(
-    keras_rec,
-    prepare_recipe(train),
-    format = "qs",
-    deployment = "main"
-  ),
-  tar_target(
-    units,
-    c(16, 32),
-    deployment = "main"
-  ),
-  tar_target(
-    act,
-    c("relu", "sigmoid"),
-    deployment = "main"
-  ),
-  tar_target(
-    run,
-    test_model(init, keras_rec, units1 = units, act1 = act),
-    pattern = cross(units, act),
-    format = "fst_tbl"
-  ),
-  tar_target(
-    best_run,
-    run %>%
-      top_n(1, accuracy) %>%
-      head(1),
-    format = "fst_tbl",
-    deployment = "main"
-  ),
-  tar_target(
-    best_model,
-    train_best_model(best_run, keras_rec),
-    format = "keras"
   )
   
   
+  
+  # 
+  # ,
+  # tar_target(
+  #   keras_rec,
+  #   prepare_recipe(train),
+  #   format = "qs",
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   units,
+  #   c(16, 32),
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   act,
+  #   c("relu", "sigmoid"),
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   run,
+  #   test_model(init, keras_rec, units1 = units, act1 = act),
+  #   pattern = cross(units, act),
+  #   format = "fst_tbl"
+  # ),
+  # tar_target(
+  #   best_run,
+  #   run %>%
+  #     top_n(1, accuracy) %>%
+  #     head(1),
+  #   format = "fst_tbl",
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   best_model,
+  #   train_best_model(best_run, keras_rec),
+  #   format = "keras"
+  # )
+  
+  
+  
+  
+  
+  
+  ,
+  tar_files(
+    paths,
+    dir('data', full.names = TRUE)[2]
+  ),
+  tar_target(
+    raw_data,
+    read_csv(paths, col_types = cols()),
+    pattern = map(paths)
+  ),
+  tar_target(
+    data,
+    raw_data %>%
+      mutate(Ozone = replace_na(Ozone, mean(Ozone, na.rm = TRUE))),
+    pattern = map(raw_data)
+  ),
+  tar_target(
+    hist,
+    create_plot(data),
+    pattern = map(data)),
+  tar_target(
+    fit,
+    lm(Ozone ~ Wind + Temp, data),
+    pattern = map(data)),
+  
+  tar_file(template, 'inst/template.Rmd'),
+  
+  tar_target(
+    report,
+    rmarkdown::render(
+      template,
+      params = list(
+        histogram = hist,
+        model = fit,
+        title = as.character(tar_name())
+      ),
+      output_file = as.character(tar_name()),
+      output_dir = "chapters") %>%
+      change_ext(inext = "md", outext = "Rmd"),
+    pattern = map(hist, fit),
+    format = 'file'
+  ),
+  
+  tar_file(index, 'index.Rmd'),
+  
+  tar_target(
+    book,
+    render_with_deps(index, report)
+  )
   
   
   

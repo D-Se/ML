@@ -16,3 +16,12 @@
 #   recipes = targets::tar_read(recipes),
 #   models = targets::tar_read(models)
 # )
+
+
+
+
+#' @title temporary airquality data for bookdown
+#' @format see `airquality`
+#' @source New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).
+data <- NULL
+
