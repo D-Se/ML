@@ -8,6 +8,29 @@ params:
   title: NA
 ---
 
+```
+bookdown::gitbook:
+  highlight: haddock
+  includes:
+    in_header: assets/anchor.html
+  css: assets/style.css
+  config:
+    edit: 
+      link: https://github.com/D-Se/AIS/edit/master/%s
+      text: "Suggest an edit"
+    toc:
+      collapse: section
+      before: |
+        <li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
+    download: ["rmd"]
+    sharing:
+      github: yes
+      twitter: no
+      facebook: no
+      all: no
+```
+
+
 # `r params$title`
 
 ```{r setup, include=FALSE}

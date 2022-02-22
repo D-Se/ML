@@ -12,3 +12,5 @@
 ^dev
 ^index.Rmd
 ^_bookdown.yml
+^_chapters
+^_common.R

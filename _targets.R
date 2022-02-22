@@ -25,7 +25,7 @@ tar_option_set(packages = c(
   "workflows", "workflowsets",
   
   #' @note data wrangling: tidyverse
-  "dplyr", "ggplot2", "rlang", "forcats",
+  "dplyr", "ggplot2", "rlang", "forcats", "purrr",
   # TODO replace readr and tidyr
   "readr", "tidyr",
   
@@ -314,7 +314,7 @@ list(
         title = as.character(tar_name())
       ),
       output_file = as.character(tar_name()),
-      output_dir = "chapters") %>%
+      output_dir = "_chapters") %>%
       change_ext(inext = "md", outext = "Rmd"),
     pattern = map(hist, fit),
     format = 'file'

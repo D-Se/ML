@@ -1,9 +1,34 @@
 ---
+title: "Machine Learning in R"
+description: |
+  This book is a maximum reproducible example of analysis pipelines in R.
 author: "Donald Seinen"
 date: "`r Sys.Date()`"
 output:
-  bookdown::gitbook: default
+  bookdown::bs4_book:
+    includes:
+      in_header: assets/anchor.html
+    css: assets/style.css
+    config:
+      edit: 
+        link: https://github.com/D-Se/ML/edit/master/%s
+        text: "Suggest an edit"
+    sharing:
+      github: yes
+      twitter: no
+      facebook: no
+      all: no
 documentclass: book
+link-citations: yes
+bibliography: [references.bib, packages.bib]
+biblio-style: apalike
 ---
 
 # targets-parameterized-bookdown
+
+
+::: question
+
+test
+
+:::
