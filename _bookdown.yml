@@ -11,5 +11,5 @@ rmd_files:
 - "_chapters/00-authors.Rmd"
 - "_chapters/@appendix.Rmd"
 - "dev/sample.Rmd"
-# FIXME for some reason _bookdown.yml is here  
+# FIXME place parameterized at a reasonable position
 # parameterized gets added after this

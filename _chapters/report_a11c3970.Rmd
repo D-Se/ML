@@ -1,24 +1,4 @@
 
-    bookdown::gitbook:
-      highlight: haddock
-      includes:
-        in_header: assets/anchor.html
-      css: assets/style.css
-      config:
-        edit: 
-          link: https://github.com/D-Se/AIS/edit/master/%s
-          text: "Suggest an edit"
-        toc:
-          collapse: section
-          before: |
-            <li class="toc-logo"><a href="./"><img src="images/logo.png"></a></li>
-        download: ["rmd"]
-        sharing:
-          github: yes
-          twitter: no
-          facebook: no
-          all: no
-
 # report_a11c3970
 
 ![](C:/Users/D/Documents/R/NJU/ML/_chapters/report_a11c3970_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
