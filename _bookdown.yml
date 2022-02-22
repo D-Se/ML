@@ -1,4 +1,15 @@
-
 rmd_subdir: "_chapters"
 output_dir: "_book"
 delete_merged_file: true
+
+language:
+  ui:
+    chapter_name: "Chapter "
+    
+rmd_files: 
+- "index.Rmd"
+- "_chapters/00-authors.Rmd"
+- "_chapters/@appendix.Rmd"
+- "dev/sample.Rmd"
+# FIXME for some reason _bookdown.yml is here  
+# parameterized gets added after this

@@ -232,7 +232,7 @@ list(
   }
   )
   
-  
+  #' @note keras neural network starts here
   
   # 
   # ,
@@ -275,7 +275,7 @@ list(
   
   
   
-  
+  #' @note book starts here
   
   ,
   tar_files(

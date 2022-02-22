@@ -1,0 +1,59 @@
+[//]: # "This is a markdown exhibition for reference."
+
+[///]: # "I highly recommend RStudio V1.4 for the visual editor. See <https://bookdown.org/yihui/rmarkdown-cookbook/> See <https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>"
+
+# Dev exhibition
+
+## sections
+
+```{r chunkname, eval=FALSE, include=FALSE}
+1 + 1
+```
+
+In our project we use `kableExtra` or `gtsummary` packages to generate stylish dynamic tables instead of native markdown table.
+
+| Col1 | Col2 |
+|------|------|
+| a    | 1    |
+| b    | 2    |
+
+```{r}
+data.frame(Col1 = c("a", "b"), Col2=1:2) |>
+  kableExtra::kbl(align = "c", ) |>
+  kableExtra::kable_classic_2() |>
+  kableExtra::kable_styling(full_width = F)
+```
+
+This is a cross-reference \@ref()
+
+*italic* **bold**
+
+<!--- HTML comment -->
+
+<center>
+
+centered text
+
+</center>
+
+this is a [link](https://d-se.github.io/AIS/).
+
+::: note
+code `function(...)`
+:::
+
+::: theory
+Some guy once said: *Hello*.
+:::
+
+::: package
+`plumber` is API for web apps
+:::
+
+::: question
+this is a `test(hi)`
+:::
+
+::: community
+this is an interactive element
+:::

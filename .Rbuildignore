@@ -14,3 +14,8 @@
 ^_bookdown.yml
 ^_chapters
 ^_common.R
+^_book
+^assets
+^js
+^packages.bib
+^references.bib
