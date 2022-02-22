@@ -19,16 +19,24 @@ BugReports: https://github.com/D-Se/ML/issues
 Imports: 
     cli (>= 3.2.0),
     crayon (>= 1.5.0),
+    dplyr (>= 1.0.8),
+    keras (>= 2.8.0),
     lifecycle,
+    parsnip (>= 0.1.7),
     Rcpp,
     recipes (>= 0.2.0),
     rlang (>= 1.0.1),
-    rsample (>= 0.1.1)
+    rsample (>= 0.1.1),
+    yardstick (>= 0.0.9)
 Suggests: 
     rmarkdown,
     knitr,
     testthat (>= 3.0.0),
     covr
+SystemRequirements:
+  Python (>= 2.7.0),
+  TensorFlow (https://www.tensorflow.org/),
+  Keras >= 2.0 (https://keras.io)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
@@ -36,3 +44,4 @@ LinkingTo:
     Rcpp
 Depends: 
     R (>= 4.0)
+LazyData: true

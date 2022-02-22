@@ -7,3 +7,5 @@
 ^Report.Rmd
 ^_targets
 ^README\.Rmd$
+^doc$
+^Meta$

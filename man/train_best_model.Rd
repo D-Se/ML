@@ -4,12 +4,12 @@
 \alias{train_best_model}
 \title{Retrain the best model.}
 \usage{
-train_best_model(best_run, churn_recipe)
+train_best_model(best_run, recipe)
 }
 \arguments{
 \item{best_run}{blabla.}
 
-\item{churn_recipe}{a recipe.}
+\item{recipe}{a recipe.}
 }
 \value{
 A trained Keras model.
@@ -24,14 +24,4 @@ The first time you run Keras in an R session,
 TensorFlow usually prints verbose ouput such as
 "Your CPU supports instructions that this TensorFlow binary was not compiled to use:"
 and "OMP: Info #171: KMP_AFFINITY:". You can safely ignore these messages.
-}
-\examples{
-library(keras)
-library(recipes)
-library(rsample)
-library(tidyverse)
-data <- split_data("data/customer_churn.csv")
-recipe <- prepare_recipe(data)
-run <- test_model(data, recipe, 16, 16, "relu", "relu", "sigmoid")
-train_best_model(run, recipe)
 }

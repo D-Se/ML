@@ -1,0 +1,68 @@
+#' Create `parsnip` model specifications
+#' @param fun a `parsnip` function
+#' @param engine a `parsnip` engine specification
+#' @param ... arguments passed to `parsnip` model specificatin constructors.
+#'   Empty arguments get converted to `tune::tune()`.
+#' @param mode character of length 1, one of *regression* or *classification*
+#' @export
+mod <- function(fun, engine, ..., mode = "regression") {
+  engine <- deparse(substitute(engine))
+  # get relevant parsnip function
+  eval(str2lang(paste0("parsnip::", deparse(substitute(fun))))) |>
+    do.call(
+      # replace empty argument with tune()
+      lapply(substitute(...()), function(x){
+        if(is.name(x)) str2lang("tune::tune()") else x
+      })) |>
+    parsnip::set_engine(engine) |>
+    parsnip::set_mode(mode)
+}
+
+# 
+# make_models <- function() {
+#   list(
+#     linear_reg_spec = mod(linear_reg, glmnet, penalty=,mixture=),
+#     mars_spec = mod(mars, earth, prod_degree=),
+#     svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
+#     svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
+#     knn_spec = mod(nearest_neighbor, kknn, neighbors=,dist_power=,weight_fun=),
+#     cart_spec = mod(decision_tree, rpart, cost_complexity=,min_n=),
+#     bag_cart_spec = baguette::bag_mars() |> 
+#       parsnip::set_engine("earth", time = 50L) |>
+#       parsnip::set_mode("regression"),
+#     rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
+#     xgb_spec = mod(boost_tree, xgboost,
+#                    tree_depth=, learn_rate=, loss_reduction=,
+#                    min_n=, sample_size=, trees=),
+#     cubist_spec =
+#       rules::cubist_rules(committees = tune(), neighbors = tune()) |>
+#       parsnip::set_engine("Cubist")
+#   )
+# }
+
+
+#' @title Recipe constructor
+#' @description Make preprocessor specifations using the `recipes` package. Each
+#'   recipe specifies different steps to be applied during the analysis process, 
+#'   depending on the type of model to be used.
+#' @param formula a model formula. No in-line function should be used here, and 
+#'   no minus signs are allowed. For high dimensional sets avoid this function.
+#' @param data A data frame or tibble.
+#' @export
+make_recs <- function(formula, data) {
+  list(
+    normalized_recipe =
+      recipes::recipe(formula, data) |>
+      recipes::step_normalize(all_predictors()),
+    poly_recipe = 
+      recipes::recipe(formula, data) |>
+      recipes::step_normalize(recipes::all_predictors()) |>
+      recipes::step_poly(recipes::all_predictors()) |> 
+      recipes::step_interact(~ recipes::all_predictors():recipes::all_predictors()),
+    keras_recipe = 
+      recipes::recipe(formula, data) |> 
+      recipes::step_normalize(recipes::all_predictors(), - recipes::all_outcomes()) |>
+      recipes::prep()
+  )
+}
+

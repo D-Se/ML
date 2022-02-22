@@ -7,7 +7,7 @@
 prepare_recipe(data)
 }
 \arguments{
-\item{data}{An \code{rsplit} object from \code{\link[=split_data]{split_data()}}
+\item{data}{An \code{rsplit} object.
 with the training and test customer churn data.}
 }
 \value{

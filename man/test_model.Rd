@@ -5,8 +5,8 @@
 \title{Benchmark a Keras model.}
 \usage{
 test_model(
-  churn_data,
-  churn_recipe,
+  data,
+  recipe,
   units1 = 16,
   units2 = 16,
   act1 = "relu",
@@ -15,7 +15,9 @@ test_model(
 )
 }
 \arguments{
-\item{churn_recipe}{A \code{recipe} object from \code{\link[=prepare_recipe]{prepare_recipe()}}.}
+\item{data}{a matrix.}
+
+\item{recipe}{A \code{recipe} object from \code{\link[=prepare_recipe]{prepare_recipe()}}.}
 
 \item{units1}{Number of neurons in the first layer.}
 
@@ -47,13 +49,4 @@ The first time you run Keras in an R session,
 TensorFlow usually prints verbose ouput such as
 "Your CPU supports instructions that this TensorFlow binary was not compiled to use:"
 and "OMP: Info #171: KMP_AFFINITY:". You can safely ignore these messages.
-}
-\examples{
-library(keras)
-library(recipes)
-library(rsample)
-library(tidyverse)
-data <- split_data("data/customer_churn.csv")
-recipe <- prepare_recipe(data)
-test_model(data, recipe, 16, 16, "relu", "relu", "sigmoid")
 }

@@ -5,8 +5,9 @@
 #'   and run it on the test data.
 #' @return A `recipe` object with the preprocessing steps
 #'   and the preprocessed test data.
-#' @param data An `rsplit` object from [split_data()]
+#' @param data An `rsplit` object.
 #'   with the training and test customer churn data.
+#' @import recipes
 #' @export
 prepare_recipe <- function(data) {
   data |>
@@ -19,15 +20,18 @@ prepare_recipe <- function(data) {
 #' @title Define a Keras model.
 #' @description Define a Keras model for the customer churn data.
 #' @return A Keras model. Not compiled or run yet.
-#' @param churn_recipe A `recipe` object from [prepare_recipe()].
+#' @param recipe A `recipe` object from [prepare_recipe()].
 #' @param units1 Number of neurons in the first layer.
 #' @param units2 Number of neurons in the second layer.
 #' @param act1 Activation function for layer 1.
 #' @param act2 Activation function for layer 2.
 #' @param act3 Activation function for layer 3.
+#' 
+#' @import keras 
+#' @import recipes
 #' @export
-define_model <- function(churn_recipe, units1, units2, act1, act2, act3) {
-  input_shape <- ncol(juice(churn_recipe, all_predictors(), composition = "matrix"))
+define_model <- function(recipe, units1, units2, act1, act2, act3) {
+  input_shape <- ncol(juice(recipe, all_predictors(), composition = "matrix"))
   keras_model_sequential() |>
     layer_dense(
       units = units1,
@@ -58,24 +62,19 @@ define_model <- function(churn_recipe, units1, units2, act1, act2, act3) {
 #'   and "OMP: Info #171: KMP_AFFINITY:". You can safely ignore these messages.
 #' @return A trained Keras model.
 #' @inheritParams define_model
+#' @import keras
+#' @import recipes
+#' @importFrom dplyr pull
 #' @export
-#' @examples
-#' library(keras)
-#' library(recipes)
-#' library(rsample)
-#' library(tidyverse)
-#' data <- split_data("data/customer_churn.csv")
-#' recipe <- prepare_recipe(data)
-#' train_model(recipe, 16, 16, "relu", "relu", "sigmoid")
 train_model <- function(
-  churn_recipe,
+  recipe,
   units1 = 16,
   units2 = 16,
   act1 = "relu",
   act2 = "relu",
   act3 = "sigmoid"
 ) {
-  model <- define_model(churn_recipe, units1, units2, act1, act2, act3)
+  model <- define_model(recipe, units1, units2, act1, act2, act3)
   compile(
     model,
     optimizer = "adam",
@@ -83,11 +82,11 @@ train_model <- function(
     metrics = c("accuracy")
   )
   x_train_tbl <- juice(
-    churn_recipe,
+    recipe,
     all_predictors(),
     composition = "matrix"
   )
-  y_train_vec <- juice(churn_recipe, all_outcomes()) |>
+  y_train_vec <- juice(recipe, all_outcomes()) |>
     pull()
   fit(
     object = model,
@@ -106,20 +105,22 @@ train_model <- function(
 #'   on the test dataset.
 #' @return Classification accuracy of a trained Keras model on the test
 #'   dataset.
-#' @inheritParams define_model
+#' @param data a matrix.
+#' @param recipe a `recipe` object from the `recipes` packages.
+#' @param model a `keras` model to assess.
+#' @import keras
+#' @import dplyr
+#' @importFrom recipes bake
+#' @importFrom rsample testing
+#' @importFrom yardstick conf_mat
+#' @importFrom stats predict
 #' @export
-#' @examples
-#' library(keras)
-#' library(recipes)
-#' library(rsample)
-#' library(tidyverse)
-#' library(yardstick)
-#' data <- split_data("data/customer_churn.csv")
-#' recipe <- prepare_recipe(data)
-#' model <- train_model(recipe, 16, 16, "relu", "relu", "sigmoid")
-#' test_accuracy(data, recipe, model)
-test_accuracy <- function(churn_data, churn_recipe, model) {
-  testing_data <- bake(churn_recipe, testing(churn_data))
+test_accuracy <- function(data, recipe, model) {
+  # silencing non-standard evaluation NOTE from R CMD check
+  # https://stackoverflow.com/questions/8096313/no-visible-binding-for-global-variable-note-in-r-cmd-check
+  truth=estimate=.metric=.estimate=compressive_strength=NULL
+  
+  testing_data <- bake(recipe, testing(data))
   x_test_tbl <- testing_data |>
     select(-compressive_strength) |>
     as.matrix()
@@ -167,26 +168,19 @@ test_accuracy <- function(churn_data, churn_recipe, model) {
 #'   * `act3`: number of neurons in layer 3.
 #' @inheritParams define_model
 #' @inheritParams test_accuracy
+#' @importFrom dplyr tibble
 #' @export
-#' @examples
-#' library(keras)
-#' library(recipes)
-#' library(rsample)
-#' library(tidyverse)
-#' data <- split_data("data/customer_churn.csv")
-#' recipe <- prepare_recipe(data)
-#' test_model(data, recipe, 16, 16, "relu", "relu", "sigmoid")
 test_model <- function(
-  churn_data,
-  churn_recipe,
+  data,
+  recipe,
   units1 = 16,
   units2 = 16,
   act1 = "relu",
   act2 = "relu",
   act3 = "sigmoid"
 ) {
-  model <- train_model(churn_recipe, units1, units2, act1, act2, act3)
-  accuracy <- test_accuracy(churn_data, churn_recipe, model)
+  model <- train_model(recipe, units1, units2, act1, act2, act3)
+  accuracy <- test_accuracy(data, recipe, model)
   tibble(
     accuracy = accuracy,
     units1 = units1,
@@ -207,21 +201,11 @@ test_model <- function(
 #'   and "OMP: Info #171: KMP_AFFINITY:". You can safely ignore these messages.
 #' @return A trained Keras model.
 #' @param best_run blabla.
-#' @param churn_recipe a recipe.
-#' 
+#' @param recipe a recipe.
 #' @export
-#' @examples
-#' library(keras)
-#' library(recipes)
-#' library(rsample)
-#' library(tidyverse)
-#' data <- split_data("data/customer_churn.csv")
-#' recipe <- prepare_recipe(data)
-#' run <- test_model(data, recipe, 16, 16, "relu", "relu", "sigmoid")
-#' train_best_model(run, recipe)
-train_best_model <- function(best_run, churn_recipe) {
+train_best_model <- function(best_run, recipe) {
   train_model(
-    churn_recipe,
+    recipe,
     best_run$units1,
     best_run$units2,
     best_run$act1,

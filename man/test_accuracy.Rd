@@ -4,10 +4,14 @@
 \alias{test_accuracy}
 \title{Test accuracy.}
 \usage{
-test_accuracy(churn_data, churn_recipe, model)
+test_accuracy(data, recipe, model)
 }
 \arguments{
-\item{churn_recipe}{A \code{recipe} object from \code{\link[=prepare_recipe]{prepare_recipe()}}.}
+\item{data}{a matrix.}
+
+\item{recipe}{a \code{recipe} object from the \code{recipes} packages.}
+
+\item{model}{a \code{keras} model to assess.}
 }
 \value{
 Classification accuracy of a trained Keras model on the test
@@ -16,15 +20,4 @@ dataset.
 \description{
 Compute the classification accuracy of a trained Keras model
 on the test dataset.
-}
-\examples{
-library(keras)
-library(recipes)
-library(rsample)
-library(tidyverse)
-library(yardstick)
-data <- split_data("data/customer_churn.csv")
-recipe <- prepare_recipe(data)
-model <- train_model(recipe, 16, 16, "relu", "relu", "sigmoid")
-test_accuracy(data, recipe, model)
 }

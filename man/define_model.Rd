@@ -4,10 +4,10 @@
 \alias{define_model}
 \title{Define a Keras model.}
 \usage{
-define_model(churn_recipe, units1, units2, act1, act2, act3)
+define_model(recipe, units1, units2, act1, act2, act3)
 }
 \arguments{
-\item{churn_recipe}{A \code{recipe} object from \code{\link[=prepare_recipe]{prepare_recipe()}}.}
+\item{recipe}{A \code{recipe} object from \code{\link[=prepare_recipe]{prepare_recipe()}}.}
 
 \item{units1}{Number of neurons in the first layer.}
 
