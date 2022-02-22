@@ -9,6 +9,8 @@
 status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://github.com/D-Se/ML/actions)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codebase
+size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://github.com/D-Se/ML)
 [![Codecov test
 coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
 <!-- badges: end -->
@@ -22,7 +24,7 @@ coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://
 This repository contains analysis, utilities and workflows for the *NJU
 020205D17 Machine Learning* course.
 
-## Quick start 
+## Quick start
 
 To start modelling, use
 
