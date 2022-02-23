@@ -19,3 +19,5 @@
 ^js
 ^packages.bib
 ^references.bib
+^app\.R$
+^rsconnect$

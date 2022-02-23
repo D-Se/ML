@@ -34,7 +34,8 @@ Suggests:
     rmarkdown,
     knitr,
     testthat (>= 3.0.0),
-    covr
+    covr,
+    spelling
 SystemRequirements:
   Python (>= 2.7.0),
   TensorFlow (https://www.tensorflow.org/),
@@ -47,3 +48,4 @@ LinkingTo:
 Depends: 
     R (>= 4.0)
 LazyData: true
+Language: 'en-US'
