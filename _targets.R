@@ -276,35 +276,36 @@ list(
   
   
   #' @note book starts here
-  
+  ### FIXME: pipeline does not renew if _bookdown.yml changes
+  # Workaround: delete "book" object from _targets/object/
   ,
   tar_files(
     paths,
     dir('data', full.names = TRUE)[2]
   ),
-  tar_target(
+  tgt(
     raw_data,
     read_csv(paths, col_types = cols()),
     pattern = map(paths)
   ),
-  tar_target(
+  tgt(
     data,
     raw_data %>%
       mutate(Ozone = replace_na(Ozone, mean(Ozone, na.rm = TRUE))),
     pattern = map(raw_data)
   ),
-  tar_target(
+  tgt(
     hist,
     create_plot(data),
     pattern = map(data)),
-  tar_target(
+  tgt(
     fit,
     lm(Ozone ~ Wind + Temp, data),
     pattern = map(data)),
   
   tar_file(template, 'inst/template.Rmd'),
   
-  tar_target(
+  tgt(
     report,
     rmarkdown::render(
       template,
