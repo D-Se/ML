@@ -4,8 +4,8 @@ library(targets)
 library(tarchetypes)
 library(ML)
 library(future)
-#library(future.callr)
-#plan(multisession)
+library(future.callr)
+plan(multisession)
 
 tgt <- tar_target
 
@@ -13,7 +13,7 @@ tgt <- tar_target
 data(concrete, package = "modeldata")
 
 ### TODO: is this more efficient than hardcore for each target?
-tar_option_set(packages = c(
+tar_option_set(error = "continue", packages = c(
   #' @note tidymodels interface
   #' TODO prune workflowsets --> individual targets for models.
   "rsample", "recipes", "parsnip", "tune", "finetune", "yardstick",
@@ -94,41 +94,41 @@ list(
       rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
       xgb_spec = mod(boost_tree, xgboost,
                      tree_depth=, learn_rate=, loss_reduction=,
-                     min_n=, sample_size=, trees=)#,
-      # cubist_spec =
-      #   cubist_rules(committees = tune(), neighbors = tune()) |>
-      #   set_engine("Cubist")
+                     min_n=, sample_size=, trees=),
+      cubist_spec =
+        cubist_rules(committees = tune(), neighbors = tune()) |>
+        set_engine("Cubist")
     )
   }
   ),
   tgt(flows, {
     list(
-      #normalized = workflow_set(
-      # list(
-      #  normalized = recipes$normalized_recipe),
-      #list(#SVM_radial = models$svm_r_spec,
-      #SVM_poly = models$svm_p_spec,
-      #KNN = models$knn_spec)
-      #  ),
+      normalized = workflow_set(
+        list(
+          normalized = recipes$normalized_recipe),
+        list(SVM_radial = models$svm_r_spec,
+          SVM_poly = models$svm_p_spec,
+          KNN = models$knn_spec)
+      ),
       no_pre_proc = workflow_set(
         list(
           simple = workflow_variables(compressive_strength,
                                       everything())
         ),
-        list(MARS = models$mars_spec)#,
-        #CART = models$cart_spec,
+        list(MARS = models$mars_spec,
+        CART = models$cart_spec,
         ### FIXME: CART_bagged is currently bugged
         #CART_bagged = models$bag_cart_spec,
-        #RF = models$rf_spec)#,
-        #boosting = models$xgb_spec,
-        #Cubist = models$cubist_spec)
-      )#,
-      #with_features = workflow_set(
-      # list(full_quad = recipes$poly_recipe),
-      #list(
-      # linear_reg = models$linear_reg_spec,
-      #KNN = models$knn_spec)
-      #)
+        RF = models$rf_spec,
+        boosting = models$xgb_spec,
+        Cubist = models$cubist_spec
+      )),
+      with_features = workflow_set(
+        list(full_quad = recipes$poly_recipe),
+        list(
+          linear_reg = models$linear_reg_spec,
+          KNN = models$knn_spec)
+      )
     ) |>
       bind_rows() |>
       mutate(wflow_id = gsub("(simple_)|(normalized_)", "", wflow_id))
@@ -180,12 +180,12 @@ list(
   }),
   tgt(winners_pre_test, {
     results |>
-      extract_workflow_set_result("MARS") |>
+      extract_workflow_set_result("boosting") |>
       select_best(metric = "rmse")
   }),
   tgt(winners_post_test, {
     results |>
-      extract_workflow("MARS") |>
+      extract_workflow("boosting") |>
       finalize_workflow(winners_pre_test) |>
       last_fit(split = init)
   }),
@@ -207,42 +207,42 @@ list(
   ####   Keras    #####
   #####################
   #' @note keras neural network starts here
-  # ,
-  # tar_target(
-  #   keras_rec,
-  #   prepare_recipe(train),
-  #   format = "qs",
-  #   deployment = "main"
-  # ),
-  # tar_target(
-  #   units,
-  #   c(16, 32),
-  #   deployment = "main"
-  # ),
-  # tar_target(
-  #   act,
-  #   c("relu", "sigmoid"),
-  #   deployment = "main"
-  # ),
-  # tar_target(
-  #   run,
-  #   test_model(init, keras_rec, units1 = units, act1 = act),
-  #   pattern = cross(units, act),
-  #   format = "fst_tbl"
-  # ),
-  # tar_target(
-  #   best_run,
-  #   run %>%
-  #     top_n(1, accuracy) %>%
-  #     head(1),
-  #   format = "fst_tbl",
-  #   deployment = "main"
-  # ),
-  # tar_target(
-  #   best_model,
-  #   train_best_model(best_run, keras_rec),
-  #   format = "keras"
-  # )
+  ,
+  tar_target(
+    keras_rec,
+    prepare_recipe(train),
+    format = "qs",
+    deployment = "main"
+  ),
+  tar_target(
+    units,
+    c(16, 32),
+    deployment = "main"
+  ),
+  tar_target(
+    act,
+    c("relu", "sigmoid"),
+    deployment = "main"
+  ),
+  tar_target(
+    run,
+    test_model(init, keras_rec, units1 = units, act1 = act),
+    pattern = cross(units, act),
+    format = "fst_tbl"
+  ),
+  tar_target(
+    best_run,
+    run %>%
+      top_n(1, accuracy) %>%
+      head(1),
+    format = "fst_tbl",
+    deployment = "main"
+  ),
+  tar_target(
+    best_model,
+    train_best_model(best_run, keras_rec),
+    format = "keras"
+  )
   
   #####################
   ####  Bookdown  #####

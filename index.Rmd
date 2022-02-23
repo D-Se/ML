@@ -35,13 +35,12 @@ knitr::opts_chunk$set(
 options(warn=-1)
 ```
 
-# ML <img src="man/figures/logo.png" align="right" height="139" />
+# ML <img src="man/figures/logo.png" align="right" height="139"/>
 
 <!-- badges: start -->
-[![R build status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://github.com/D-Se/ML/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Code size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://github.com/D-Se/ML)
-[![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
+
+[![R build status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://github.com/D-Se/ML/actions) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Code size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://github.com/D-Se/ML) [![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
+
 <!-- badges: end -->
 
 <center>
@@ -50,32 +49,56 @@ options(warn=-1)
 
 </center>
 
-This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.
+This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.  
 
 
+```{=html}
 <style>
 div.green { background-color:#93ed99; border-radius: 5px; padding: 20px;}
 </style>
-<div class = "green">
-We are currently <B> recruiting! </B>
-</div>
-
-## Quick start 
-
-To start modelling, use
-``` r
-devtools::install_github("D-Se/ML")
 ```
+::: green
+<center>
 
-## Getting help
-- See `vignette("ML")` for an in-depth introduction of the course and the team.
-- For team members, see `vignette("Onboarding")`. 
-- See `vignette("Planning")` for planning and continuous integration details.
+We are currently <B> recruiting! </B>
+
+</center>
+:::
+
+
+For questions, [Github Discussions](https://github.com/D-Se/ML/discussions) are available, or you can send an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.
+
+## Project Goals
+
+-   *Deliver* a **scalable**, **reproducible** and **continuously integrated** data analysis compendium that:
+
+    -   *Deploys* Machine Learning algorithms,
+
+    -   *Visualizes* model performances & statistical inference,
+
+    -   *Communicates* findings to target audiences in multiple formats.
+
+-   *Display* best practices at the edge of machine learning knowledge using **R**, placing importance on:
+
+    -   *Packaging* approaches using version control,
+
+    -   *Deploying* computationally efficient algorithms,
+
+    -   *Interfacing* modelling & reporting API's,
+
+    -   *Adopting* a functional programming mindset.
+
+## Project deliverables
+
+-   A data analysis report in **pdf** format,
+
+-   An R package containing `target`-based `tidymodels` approach,
+
+-   A pipeline-generated `bookdown` book,
+
+-   Github repository of mock firm & analysis.
 
 ## Project visualization
-
-[//]: # (Insert targets workflow visualization here)
-
 
 ```{r pipeline, results='markup', error=FALSE, prompt=FALSE, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90',comment=""}
 ### TODO: annotate visnetwork with time of last model run
@@ -85,4 +108,22 @@ targets::tar_visnetwork(
 )
 )
 ```
+
+In this image there are already over 25 000 different models, implemented using 12 modelling packages! It is the result of applying best practices in R to achieve scalable computing and manageble workflows. Each node represents a step in the `targets` core pipeline. When an edit is made to a file, the pipeline identifies those nodes that need to be updated. For example, if a set of the models fails, in red, the code needs to be looked at. Dependencies of this code are rerun once the models succeed. An example of such dependency is this book, which in itself is *parameterized*.  
+
+*keras* neural nets, *MARS*, *Random Forests*, *SVM* are already part of the `ML` API. This project uses `R` & `C++` for computation, `JavaScript`, `HTML` & `CSS` for reporting, `YAML`, `TeX` and `AWK` for text formatting. Whether you like **modelling**, **visualizing**, or **communicating**, this projects offers the chance to explore best R practices. And the best part? We don't have to leave RStudio at all for any of it.
+
+
+::: community
+
+<center>
+
+Here at NJU we are a community. We are open to beginners, advanced users alike. Extensive help documentation is being written to accomodate each group member to be as comfortable and productive as possible! 
+
+</center>
+
+:::
+
+Curious to know more, want to see a live coding example? Send me an email or add me on QQ or WeChat!
+
 

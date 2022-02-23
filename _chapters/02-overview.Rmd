@@ -1,0 +1,126 @@
+# Overview {#overview}
+
+```{=html}
+<style>
+
+table {
+        width: 50%;
+        text-align: center;
+    }
+</style>
+```
+<center>
+
+[logo](images/logo.png)
+
+</center>
+
+## Quick start
+
+::: package
+`ML` is a scalable data analysis *compendium* that interfaces to well known APIs like `tidyverse`, `tidymodels`, `shiny`, `bookdown`.
+:::
+
+`ML` is already quite rich in functionality.  
+It: 1. Uses functional programming - it fetches, validates, transforms and cleans data,
+
+2.  Specifies modelling workflows,
+
+3.  Implements those workflows *asynchronously*,
+
+4.  Collect metrics, visualizes model performance,
+
+5.  Constructs this book, and a Shiny API!
+
+6.  And finally, exports finalized models to end users as convenient objects for inspection and sharing.
+
+To start modelling, use
+
+``` r
+devtools::install_github("D-Se/ML")
+```
+
+Want to retrieve an intermediate step of the analysis pipeline? Sure! Here is *an example of a xgboost tree model, displaying its hyperparameters that need tuning.*
+
+```{r model_spec_example}
+ML::analysis$models$xgb_spec
+```
+
+::: theory
+Our team finds the best models and present them in an engaging way: a book!
+:::
+
+## Github repo
+
+The [Github repo](https://github.com/D-Se/ML) is where the project lives. In it, you can find, among many others, the following files.
+
+```{verbatim}
+├── .github  >>> github workflows, automated checking
+├── R/  >>> directory for ML package functions.
+├──── ... >>> regular R package functions. o sub-directory allowed.
+├── inst/  >>> supplementary materials for ML package
+├── man/  >>> automatically generated package documentation [NO EDIT]
+├──── figures/ >>> images used
+├── src/  >>> compiled (C++) code used in ML package
+├── tests/  >>> unit tests for package functions
+├──── testthat/ >>> directory of unit test
+├── vignettes/  >>> long-form documentation
+├── .Rbuildignore/ >>> package utility: instruction set to ignore non-standard files
+├── .gitignore  >>> instruction set to RStudio to ignore files in directory for version control
+├── DESCRIPTION  >>> R package metadata file
+├── ML.Rproj  >>> RStudio file [NO EDIT]
+├── NAMESPACE  >>> automatically generated R package build file [NO EDIT]
+├── README.Rmd  >>> Github introduction file with executable R code
+├── README.md >>> automatically generated Github introduction file [NO EDIT]
+├── run.sh  >>> shell script to execture pipeline
+├── run.R  >>>
+├── _targets.R  # core pipeline
+└── report.Rmd  
+```
+
+The project is split up into segments, each ending with finishing a deliverable. These steps can be found in the [milestones](https://github.com/D-Se/ML/milestones) section of the repo. The milestones are made up of collections of [issues](https://github.com/D-Se/ML/issues). These are tasks assigned to project members, and can be added by any person with access rights to the repo. [labels](https://github.com/D-Se/ML/labels) are placed on issues to make it easy to find and assign tasks. Each issue is allocated a *difficulty* and *priority* label, and further labels were appropriate.
+
+## Project Planning
+
+In such a large scale approach where multiple people contribute models, code, opinions et cetera it is important to keep track of who does what, and how things are going.
+
+To keep our focus straight, automation tools are available, such as *Github* commit-tracking to give insights who *exactly* did what, when.
+
+```{verbatim}
+#!/usr/bin/bash sh
+# count lines of code per contributor to github repo in main .rmd files
+contr () {
+  local perfile="false";
+  if [[ $1 = "-f" ]]; then
+  perfile="true";
+  shift;
+  fi;
+  if [[ $# -eq 0 ]]; then
+          echo "no files given!" 1>&2;
+        return 1;
+        else
+          local f; {
+            for f in "$@";
+            do
+            echo "$f";
+            git blame --show-email "$f" |
+              sed -nE 's/^[^ ]* *.<([^>]*)>.*$/: \1/p' |
+              sort | uniq -c | sort -r -nk1;
+            done
+          } | if [[ "$perfile" = "true" ]]; then
+        tee /tmp/s.txt;
+        else
+          tee /tmp/s.txt > /dev/null;
+        fi;
+        awk -v FS='*: *' '/^ *[0-9]/{sums[$2] += $1} END {
+        for (i in sums) printf("%7s : %s\n", sums[i], i)
+        }' /tmp/s.txt |
+          sort -r -nk1;
+        fi
+}
+find . -iname '*.Rmd' | while read file; do contr -f "$file"; done > dev/counts.txt
+```
+
+Hmm, I see there might be an issue! Let's deal with them through Github.
+
+![](images/Issue.png "Github repo")
