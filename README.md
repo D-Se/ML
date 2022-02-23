@@ -11,10 +11,14 @@ status](https://github.com/D-Se/ML/workflows/R-CMD-check/badge.svg)](https://git
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![Code
 size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://github.com/D-Se/ML)
-[![Codecov test
-coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
+[![DOI](https://zenodo.org/badge/461093163.svg)](https://zenodo.org/badge/latestdoi/461093163)
 <!-- badges: end -->
 
+<!--
+
+[![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
+
+-->
 <center>
 
 *Sincerity with Aspiration, Perseverance with Integrity*
