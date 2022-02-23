@@ -29,12 +29,18 @@ This repository contains analysis, utilities and workflows for the *NJU
 020205D17 Machine Learning* course.
 
 <style>
+
 div.green { background-color:#93ed99; border-radius: 5px; padding: 20px;}
+
 </style>
 
 <div class="green">
 
+<center>
+
 We are currently <B> recruiting! </B>
+
+</center>
 
 </div>
 
