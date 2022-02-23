@@ -1,5 +1,5 @@
-# box::use(targets[#plot = tar_visnetwork, tgt = tar_target, ...], ML[...])
 
+# box::use(targets[#plot = tar_visnetwork, tgt = tar_target, ...], ML[...])
 library(targets)
 library(tarchetypes)
 library(ML)
@@ -50,9 +50,9 @@ list(
                 .groups = "drop")
   }),
   
-                      #####################
-                      #### Tidymodels #####
-                      #####################
+  #####################
+  #### Tidymodels #####
+  #####################
   
   tgt(init, {
     set.seed(1)
@@ -61,45 +61,45 @@ list(
   tgt(train, training(init)),
   tgt(test, testing(init)),
   tgt(folds, vfold_cv(train, strata = compressive_strength, repeats = 1)),
-  tgt(recipes, 
+  tgt(recipes,
       list(
         normalized_recipe =
           recipe(compressive_strength ~ ., train) |>
           step_normalize(all_predictors()),
-        poly_recipe = 
+        poly_recipe =
           recipe(compressive_strength ~ ., train) |>
           step_normalize(all_predictors()) |>
-          step_poly(all_predictors()) |> 
+          step_poly(all_predictors()) |>
           step_interact(~ all_predictors():all_predictors()),
-        keras_recipe = 
-          recipe(compressive_strength ~ ., train) |> 
+        keras_recipe =
+          recipe(compressive_strength ~ ., train) |>
           step_center(all_predictors(), -all_outcomes()) |>
           step_scale(all_predictors(), -all_outcomes()) |>
           prep()
       )
   ),
-  ### TODO: model specification: make this environment variable
-  tgt(models, {
-    list( # empty arg gets filled with tune()
-      linear_reg_spec = mod(linear_reg, glmnet, penalty=, mixture=),
-      mars_spec = mod(mars, earth, prod_degree=),
-      svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
-      svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
-      knn_spec = mod(nearest_neighbor, kknn, neighbors=, dist_power=, weight_fun=),
-      cart_spec = mod(decision_tree, rpart, cost_complexity=, min_n=),
-      ### FIXME: bagged cart is currently broken. Renamed function?
-      # bag_cart_spec = bag_mars() |> 
-      #   set_engine("earth", time = 50L) |>
-      #   set_mode("regression"),
-      rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
-      xgb_spec = mod(boost_tree, xgboost,
-                     tree_depth=, learn_rate=, loss_reduction=,
-                     min_n=, sample_size=, trees=),
-      cubist_spec =
-        cubist_rules(committees = tune(), neighbors = tune()) |>
-        set_engine("Cubist")
-    )
-  }
+  # ### TODO: model specification: make this environment variable
+  # tgt(models, {
+  #   list( # empty arg gets filled with tune()
+  #     linear_reg_spec = mod(linear_reg, glmnet, penalty=, mixture=),
+  #     mars_spec = mod(mars, earth, prod_degree=),
+  #     svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
+  #     svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
+  #     knn_spec = mod(nearest_neighbor, kknn, neighbors=, dist_power=, weight_fun=),
+  #     cart_spec = mod(decision_tree, rpart, cost_complexity=, min_n=),
+  #     ### FIXME: bagged cart is currently broken. Renamed function?
+  #     # bag_cart_spec = bag_mars() |>
+  #     #   set_engine("earth", time = 50L) |>
+  #     #   set_mode("regression"),
+  #     rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
+  #     xgb_spec = mod(boost_tree, xgboost,
+  #                    tree_depth=, learn_rate=, loss_reduction=,
+  #                    min_n=, sample_size=, trees=)#,
+  #     # cubist_spec =
+  #     #   cubist_rules(committees = tune(), neighbors = tune()) |>
+  #     #   set_engine("Cubist")
+  #   )
+  # }
   ),
   tgt(flows, {
     list(
@@ -136,7 +136,7 @@ list(
   ),
   tgt(control, {
     list(
-      grid = 
+      grid =
         control_grid( # 25200 models
           save_pred = TRUE,
           parallel_over = "everything",
@@ -161,18 +161,18 @@ list(
       )
   }#, packages = c("workflowsets", "finetune")
   ),
-  #tgt(ranking, {
+  # tgt(ranking, {
   #  results |>
   #   filter(.metric == "rmse") |>
   #  select(model, .config, rmse = mean, rank)
-  #}, packages = c("dplyr"))
-  ### TODO: results plotting to package visualizaion.R wrapper
+  # }, packages = c("dplyr"))
+  ## TODO: results plotting to package visualizaion.R wrapper
   tgt(ranking, {
     autoplot(
       results,
-      rank_metric = "rmse",  
-      metric = "rmse",       
-      select_best = TRUE    
+      rank_metric = "rmse",
+      metric = "rmse",
+      select_best = TRUE
     ) +
       geom_text(aes(y = mean - 1/2, label = wflow_id), angle = 90, hjust = 1) +
       lims(y = c(3.0, 9.5)) +
@@ -196,16 +196,16 @@ list(
     collect_predictions(winners_post_test)
   }),
   tgt(visual_verify, {
-    ggplot(predictions, aes(compressive_strength, .pred)) + 
-      geom_abline(color = "gray50", lty = 2) + 
+    ggplot(predictions, aes(compressive_strength, .pred)) +
+      geom_abline(color = "gray50", lty = 2) +
       geom_point(alpha = .5) +
       labs(x = "observed", y = "predicted")
   }
   )
   
-                      #####################
-                      ####   Keras    #####
-                      #####################
+  #####################
+  ####   Keras    #####
+  #####################
   #' @note keras neural network starts here
   # ,
   # tar_target(
@@ -244,9 +244,9 @@ list(
   #   format = "keras"
   # )
   
-                      #####################
-                      ####  Bookdown  #####
-                      #####################
+  #####################
+  ####  Bookdown  #####
+  #####################
   ### FIXME: pipeline does not renew if _bookdown.yml changes
   # Workaround: delete "book" object from _targets/object/
   ,

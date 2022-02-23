@@ -38,8 +38,9 @@ ML_add <- function(env, ...) {
 #' @param fun a `parsnip` function
 #' @param engine a `parsnip` engine specification
 #' @param ... arguments passed to `parsnip` model specificatin constructors.
-#'   Empty arguments get converted to `tune::tune()`.
+#'   Empty arguments get converted to `tune::tune()`
 #' @param mode character of length 1, one of *regression* or *classification*
+#' @importFrom tune tune
 #' @export
 mod <- function(fun, engine, ..., mode = "regression") {
   engine <- deparse(substitute(engine))
@@ -48,7 +49,7 @@ mod <- function(fun, engine, ..., mode = "regression") {
     do.call(
       # replace empty argument with tune()
       lapply(substitute(...()), function(x){
-        if(is.name(x)) str2lang("tune::tune()") else x
+        if(is.name(x)) str2lang("tune()") else x
       })) |>
     parsnip::set_engine(engine) |>
     parsnip::set_mode(mode)
@@ -84,12 +85,18 @@ mod <- function(fun, engine, ..., mode = "regression") {
 #' @param formula a model formula. No in-line function should be used here, and 
 #'   no minus signs are allowed. For high dimensional sets avoid this function.
 #' @param data A data frame or tibble.
+#' @importFrom recipes recipe
+#' @importFrom recipes all_predictors
+#' @importFrom recipes all_outcomes
+#' @importFrom recipes step_normalize
+#' @importFrom recipes step_poly
+#' @importFrom recipes step_interact
 #' @export
 make_recs <- function(formula, data) {
   list(
     normalized_recipe =
       recipes::recipe(formula, data) |>
-      recipes::step_normalize(all_predictors()),
+      recipes::step_normalize(recipes::all_predictors()),
     poly_recipe = 
       recipes::recipe(formula, data) |>
       recipes::step_normalize(recipes::all_predictors()) |>

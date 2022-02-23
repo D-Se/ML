@@ -12,7 +12,7 @@ mod(fun, engine, ..., mode = "regression")
 \item{engine}{a \code{parsnip} engine specification}
 
 \item{...}{arguments passed to \code{parsnip} model specificatin constructors.
-Empty arguments get converted to \code{tune::tune()}.}
+Empty arguments get converted to \code{tune::tune()}}
 
 \item{mode}{character of length 1, one of \emph{regression} or \emph{classification}}
 }

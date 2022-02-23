@@ -7,14 +7,13 @@
 #'   and the preprocessed test data.
 #' @param data An `rsplit` object.
 #'   with the training and test customer churn data.
-#' @import recipes
 #' @export
 prepare_recipe <- function(data) {
   data |>
-    recipe(compressive_strength ~ .) |> 
-    step_center(all_predictors(), -all_outcomes()) |>
-    step_scale(all_predictors(), -all_outcomes()) |>
-    prep()
+    recipes::recipe(compressive_strength ~ .) |> 
+    recipes::step_center(all_predictors(), -recipes::all_outcomes()) |>
+    recipes::step_scale(all_predictors(), -recipes::all_outcomes()) |>
+    recipes::prep()
 }
 
 #' @title Define a Keras model.
@@ -28,10 +27,9 @@ prepare_recipe <- function(data) {
 #' @param act3 Activation function for layer 3.
 #' 
 #' @import keras 
-#' @import recipes
 #' @export
 define_model <- function(recipe, units1, units2, act1, act2, act3) {
-  input_shape <- ncol(juice(recipe, all_predictors(), composition = "matrix"))
+  input_shape <- ncol(recipes::juice(recipe, recipes::all_predictors(), composition = "matrix"))
   keras_model_sequential() |>
     layer_dense(
       units = units1,
@@ -63,7 +61,6 @@ define_model <- function(recipe, units1, units2, act1, act2, act3) {
 #' @return A trained Keras model.
 #' @inheritParams define_model
 #' @import keras
-#' @import recipes
 #' @importFrom dplyr pull
 #' @export
 train_model <- function(
@@ -83,10 +80,10 @@ train_model <- function(
   )
   x_train_tbl <- juice(
     recipe,
-    all_predictors(),
+    recipes::all_predictors(),
     composition = "matrix"
   )
-  y_train_vec <- juice(recipe, all_outcomes()) |>
+  y_train_vec <- juice(recipe, recipes::all_outcomes()) |>
     pull()
   fit(
     object = model,
