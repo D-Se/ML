@@ -1,3 +1,39 @@
+#' construct rsample splits from data in an environment
+#'
+#' @param ... arguments passed to initial_split
+#' @param env environment
+#' @export
+add_splits <- function(..., env = new.env()) {
+  set.seed(1L)
+  args <- list(...)
+  set_in_env(
+    env, {
+      init <- rsample::initial_split(!!!args)
+      train <- rsample::training(init)
+      test <- rsample::testing(init)
+    }
+  )
+  env
+}
+
+#' construct rsample splits from data in an environment
+#'
+#' @param env environment
+#' @param ... arguments passed to initial_split
+#' @export
+ML_add <- function(env, ...) {
+  ### TODO: rewrite to use lists instead - cleaner and smaller object size.
+  # but careful of copy-on-modification semantics of lists!
+  args <- list(...)
+  name <- deparse(substitute(name))
+  set_in_env(
+    env, {
+      recop <- !!!args
+    }
+  )
+  env
+}
+
 #' Create `parsnip` model specifications
 #' @param fun a `parsnip` function
 #' @param engine a `parsnip` engine specification
@@ -17,7 +53,7 @@ mod <- function(fun, engine, ..., mode = "regression") {
     parsnip::set_engine(engine) |>
     parsnip::set_mode(mode)
 }
-
+### FIXME: x$eng_args == <list_of<quosure>> but expected method = NULL
 # 
 # make_models <- function() {
 #   list(
