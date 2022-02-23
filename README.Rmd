@@ -72,7 +72,6 @@ devtools::install_github("D-Se/ML")
 
 ```{r pipeline, prompt=FALSE, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90'}
 ### TODO: annotate visnetwork with time of last model run
-#library(ggplot2)
 
 targets::tar_visnetwork(
   label = "time"
