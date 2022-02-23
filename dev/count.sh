@@ -29,5 +29,4 @@ contr () {
           sort -r -nk1;
         fi
 }
-cd ..
-find rmd | tail -n +2 | while read file; do contr -f "$file"; done > dev/counts.txt
+find . -iname '*.Rmd' | while read file; do contr -f "$file"; done > dev/counts.txt

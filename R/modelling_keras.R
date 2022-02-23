@@ -78,12 +78,12 @@ train_model <- function(
     loss = "binary_crossentropy",
     metrics = c("accuracy")
   )
-  x_train_tbl <- juice(
+  x_train_tbl <- recipes::juice(
     recipe,
     recipes::all_predictors(),
     composition = "matrix"
   )
-  y_train_vec <- juice(recipe, recipes::all_outcomes()) |>
+  y_train_vec <- recipes::juice(recipe, recipes::all_outcomes()) |>
     pull()
   fit(
     object = model,

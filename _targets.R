@@ -79,27 +79,27 @@ list(
       )
   ),
   # ### TODO: model specification: make this environment variable
-  # tgt(models, {
-  #   list( # empty arg gets filled with tune()
-  #     linear_reg_spec = mod(linear_reg, glmnet, penalty=, mixture=),
-  #     mars_spec = mod(mars, earth, prod_degree=),
-  #     svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
-  #     svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
-  #     knn_spec = mod(nearest_neighbor, kknn, neighbors=, dist_power=, weight_fun=),
-  #     cart_spec = mod(decision_tree, rpart, cost_complexity=, min_n=),
-  #     ### FIXME: bagged cart is currently broken. Renamed function?
-  #     # bag_cart_spec = bag_mars() |>
-  #     #   set_engine("earth", time = 50L) |>
-  #     #   set_mode("regression"),
-  #     rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
-  #     xgb_spec = mod(boost_tree, xgboost,
-  #                    tree_depth=, learn_rate=, loss_reduction=,
-  #                    min_n=, sample_size=, trees=)#,
-  #     # cubist_spec =
-  #     #   cubist_rules(committees = tune(), neighbors = tune()) |>
-  #     #   set_engine("Cubist")
-  #   )
-  # }
+  tgt(models, {
+    list( # empty arg gets filled with tune()
+      linear_reg_spec = mod(linear_reg, glmnet, penalty=, mixture=),
+      mars_spec = mod(mars, earth, prod_degree=),
+      svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
+      svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
+      knn_spec = mod(nearest_neighbor, kknn, neighbors=, dist_power=, weight_fun=),
+      cart_spec = mod(decision_tree, rpart, cost_complexity=, min_n=),
+      ### FIXME: bagged cart is currently broken. Renamed function?
+      # bag_cart_spec = bag_mars() |>
+      #   set_engine("earth", time = 50L) |>
+      #   set_mode("regression"),
+      rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
+      xgb_spec = mod(boost_tree, xgboost,
+                     tree_depth=, learn_rate=, loss_reduction=,
+                     min_n=, sample_size=, trees=)#,
+      # cubist_spec =
+      #   cubist_rules(committees = tune(), neighbors = tune()) |>
+      #   set_engine("Cubist")
+    )
+  }
   ),
   tgt(flows, {
     list(
