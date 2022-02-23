@@ -1,11 +1,4 @@
-# box::use(
-#   targets[
-#     #plot = tar_visnetwork,
-#     tgt = tar_target,
-#     ...
-#   ],
-#   ML[...]
-# )
+# box::use(targets[#plot = tar_visnetwork, tgt = tar_target, ...], ML[...])
 
 library(targets)
 library(tarchetypes)
@@ -16,15 +9,18 @@ library(future)
 
 tgt <- tar_target
 
+### TODO: read actual data from external source in a tgt()
 data(concrete, package = "modeldata")
-#tar_option_set(packages = c("rlang", "tidyverse", "tidymodels"))
 
+### TODO: is this more efficient than hardcore for each target?
 tar_option_set(packages = c(
   #' @note tidymodels interface
+  #' TODO prune workflowsets --> individual targets for models.
   "rsample", "recipes", "parsnip", "tune", "finetune", "yardstick",
   "workflows", "workflowsets",
   
   #' @note data wrangling: tidyverse
+  #' TODO forcats is only used by keras. Worth the dependency?
   "dplyr", "ggplot2", "rlang", "forcats", "purrr",
   # TODO replace readr and tidyr
   "readr", "tidyr",
@@ -43,8 +39,9 @@ tar_option_set(packages = c(
 tidymodels::tidymodels_prefer()
 
 list(
-  ### TODO: data input step
+  ### TODO: data input step here
   ### TODO: validate data step
+  #' @Donald use `pointblank`
   ### TODO: data preparation step
   tgt(clean, {
     concrete |>
@@ -52,6 +49,11 @@ list(
       summarise(compressive_strength = mean(compressive_strength),
                 .groups = "drop")
   }),
+  
+                      #####################
+                      #### Tidymodels #####
+                      #####################
+  
   tgt(init, {
     set.seed(1)
     initial_split(clean, strata = compressive_strength)
@@ -62,15 +64,15 @@ list(
   tgt(recipes, 
       list(
         normalized_recipe =
-          recipe(compressive_strength ~ ., data = train) |>
+          recipe(compressive_strength ~ ., train) |>
           step_normalize(all_predictors()),
         poly_recipe = 
-          recipe(compressive_strength ~ ., data = train) |>
+          recipe(compressive_strength ~ ., train) |>
           step_normalize(all_predictors()) |>
           step_poly(all_predictors()) |> 
           step_interact(~ all_predictors():all_predictors()),
         keras_recipe = 
-          recipe(compressive_strength ~ ., data = train) |> 
+          recipe(compressive_strength ~ ., train) |> 
           step_center(all_predictors(), -all_outcomes()) |>
           step_scale(all_predictors(), -all_outcomes()) |>
           prep()
@@ -78,52 +80,21 @@ list(
   ),
   ### TODO: model specification: make this environment variable
   tgt(models, {
-    list(
-      linear_reg_spec =
-        linear_reg(penalty = tune(), mixture = tune()) |>
-        set_engine("glmnet"),
-      
-      mars_spec =
-        mars(prod_degree = tune()) |>  #<- use GCV to choose terms
-        set_engine("earth") |>
-        set_mode("regression"),
-      
-      svm_r_spec =
-        svm_rbf(cost = tune(), rbf_sigma = tune()) |>
-        set_engine("kernlab") |>
-        set_mode("regression"),
-      
-      svm_p_spec =
-        svm_poly(cost = tune(), degree = tune()) |>
-        set_engine("kernlab") |>
-        set_mode("regression"),
-      
-      knn_spec =
-        nearest_neighbor(neighbors = tune(), dist_power = tune(), weight_func = tune()) |>
-        set_engine("kknn") |>
-        set_mode("regression"),
-      
-      cart_spec =
-        decision_tree(cost_complexity = tune(), min_n = tune()) |>
-        set_engine("rpart") |>
-        set_mode("regression"),
-      
-      bag_cart_spec =
-        bag_tree() |>
-        set_engine("rpart", times = 50L) |>
-        set_mode("regression"),
-      
-      rf_spec =
-        rand_forest(mtry = tune(), min_n = tune(), trees = 1000) |>
-        set_engine("ranger") |>
-        set_mode("regression"),
-      
-      xgb_spec =
-        boost_tree(tree_depth = tune(), learn_rate = tune(), loss_reduction = tune(),
-                   min_n = tune(), sample_size = tune(), trees = tune()) |>
-        set_engine("xgboost") |>
-        set_mode("regression"),
-      
+    list( # empty arg gets filled with tune()
+      linear_reg_spec = mod(linear_reg, glmnet, penalty=, mixture=),
+      mars_spec = mod(mars, earth, prod_degree=),
+      svm_r_spec = mod(svm_rbf, kernlab, cost=, rbf_sigma=),
+      svm_p_spec = mod(svm_poly, kernlab, cost=, degree=),
+      knn_spec = mod(nearest_neighbor, kknn, neighbors=, dist_power=, weight_fun=),
+      cart_spec = mod(decision_tree, rpart, cost_complexity=, min_n=),
+      ### FIXME: bagged cart is currently broken. Renamed function?
+      # bag_cart_spec = bag_mars() |> 
+      #   set_engine("earth", time = 50L) |>
+      #   set_mode("regression"),
+      rf_spec = mod(rand_forest, ranger, mtry=, min_n=, trees = 1000),
+      xgb_spec = mod(boost_tree, xgboost,
+                     tree_depth=, learn_rate=, loss_reduction=,
+                     min_n=, sample_size=, trees=),
       cubist_spec =
         cubist_rules(committees = tune(), neighbors = tune()) |>
         set_engine("Cubist")
@@ -133,30 +104,30 @@ list(
   tgt(flows, {
     list(
       #normalized = workflow_set(
-       # list(
-        #  normalized = recipes$normalized_recipe),
-        #list(#SVM_radial = models$svm_r_spec,
-             #SVM_poly = models$svm_p_spec,
-             #KNN = models$knn_spec)
-    #  ),
+      # list(
+      #  normalized = recipes$normalized_recipe),
+      #list(#SVM_radial = models$svm_r_spec,
+      #SVM_poly = models$svm_p_spec,
+      #KNN = models$knn_spec)
+      #  ),
       no_pre_proc = workflow_set(
         list(
           simple = workflow_variables(compressive_strength,
                                       everything())
-          ),
+        ),
         list(MARS = models$mars_spec)#,
-             #CART = models$cart_spec,
-             ### FIXME: CART_bagged is currently bugged
-             #CART_bagged = models$bag_cart_spec,
-             #RF = models$rf_spec)#,
-             #boosting = models$xgb_spec,
-             #Cubist = models$cubist_spec)
+        #CART = models$cart_spec,
+        ### FIXME: CART_bagged is currently bugged
+        #CART_bagged = models$bag_cart_spec,
+        #RF = models$rf_spec)#,
+        #boosting = models$xgb_spec,
+        #Cubist = models$cubist_spec)
       )#,
       #with_features = workflow_set(
-       # list(full_quad = recipes$poly_recipe),
-        #list(
-         # linear_reg = models$linear_reg_spec,
-          #KNN = models$knn_spec)
+      # list(full_quad = recipes$poly_recipe),
+      #list(
+      # linear_reg = models$linear_reg_spec,
+      #KNN = models$knn_spec)
       #)
     ) |>
       bind_rows() |>
@@ -166,18 +137,18 @@ list(
   tgt(control, {
     list(
       grid = 
-    control_grid( # 25200 models
-      save_pred = TRUE,
-      parallel_over = "everything",
-      save_workflow = TRUE
-    ),
-    race = control_race( # 4.488 models
-      save_pred = TRUE,
-      parallel_over = "everything",
-      save_workflow = TRUE
+        control_grid( # 25200 models
+          save_pred = TRUE,
+          parallel_over = "everything",
+          save_workflow = TRUE
+        ),
+      race = control_race( # 4.488 models
+        save_pred = TRUE,
+        parallel_over = "everything",
+        save_workflow = TRUE
+      )
     )
-    )
-  }, packages = c("finetune")),
+  }),
   tgt(results, {
     flows |>
       workflow_map(
@@ -192,10 +163,10 @@ list(
   ),
   #tgt(ranking, {
   #  results |>
-   #   filter(.metric == "rmse") |>
-    #  select(model, .config, rmse = mean, rank)
+  #   filter(.metric == "rmse") |>
+  #  select(model, .config, rmse = mean, rank)
   #}, packages = c("dplyr"))
-  ### TODO: results plotting
+  ### TODO: results plotting to package visualizaion.R wrapper
   tgt(ranking, {
     autoplot(
       results,
@@ -232,9 +203,10 @@ list(
   }
   )
   
+                      #####################
+                      ####   Keras    #####
+                      #####################
   #' @note keras neural network starts here
-  
-  # 
   # ,
   # tar_target(
   #   keras_rec,
@@ -272,10 +244,9 @@ list(
   #   format = "keras"
   # )
   
-  
-  
-  
-  #' @note book starts here
+                      #####################
+                      ####  Bookdown  #####
+                      #####################
   ### FIXME: pipeline does not renew if _bookdown.yml changes
   # Workaround: delete "book" object from _targets/object/
   ,
@@ -327,9 +298,6 @@ list(
     book,
     render_with_deps(index, report)
   )
-  
-  
-  
   
   ### TODO: data pre-processing step [recipe specification]
   ### TODO: workflowsets step for dependent models [workflowsets]
