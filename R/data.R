@@ -25,3 +25,21 @@
 #' @source New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).
 data <- NULL
 
+
+#' @title Best performing ML model in group project
+#'
+#' @description A quick insight into the best performing model of the bunch
+#'
+#' @format A list containing three elements
+#' \describe{
+#'   \item{predictions}{a tibble with model performance predictions and observed events.}
+#'   \item{workflow}{a `workflow` object that specifies exact hyperparameter settings of the best model}
+#' }
+#' @source \url{https://github.com/D-Se/ML}
+"results"
+
+# results = list(
+#   predictions = targets::tar_read(predictions)[,c(3, 2, 4)] |>
+#     setNames(c("sample_row", "model_prediction", "actual_observation")),
+#   workflow = targets::tar_read(winners_post_test)$.workflow[[1]]
+# )

@@ -4,24 +4,6 @@ description: |
   This book is a maximum reproducible example of analysis pipelines in R.
 author: "Donald Seinen"
 date: "`r Sys.Date()`"
-output:
-  bookdown::bs4_book:
-    includes:
-      in_header: assets/anchor.html
-    css: assets/style.css
-    config:
-      edit: 
-        link: https://github.com/D-Se/ML/edit/master/%s
-        text: "Suggest an edit"
-    sharing:
-      github: yes
-      twitter: no
-      facebook: no
-      all: no
-documentclass: book
-link-citations: yes
-bibliography: [references.bib, packages.bib]
-biblio-style: apalike
 ---
 
 ```{r, include = FALSE}
@@ -49,8 +31,7 @@ options(warn=-1)
 
 </center>
 
-This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.  
-
+This repository contains analysis, utilities and workflows for the *NJU 020205D17 Machine Learning* course.
 
 ```{=html}
 <style>
@@ -65,9 +46,14 @@ We are currently <B> recruiting! </B>
 </center>
 :::
 
+Interested in join? Send an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`, or add on QQ / WeChat. For questions about the project, [Github Discussions](https://github.com/D-Se/ML/discussions) are available.
 
-For questions, [Github Discussions](https://github.com/D-Se/ML/discussions) are available, or you can send an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.
+```{r echo=FALSE, out.width="30%", out.height="30%", fig.align='center'}
+knitr::include_graphics("images/donald.jpg")
+```
 
+<!-- mae this a small font somewhere else -->
+To see this books (and `ML`) source code, see [Github repo](https://github.com/D-Se/ML).
 ## Project Goals
 
 -   *Deliver* a **scalable**, **reproducible** and **continuously integrated** data analysis compendium that:
@@ -90,40 +76,57 @@ For questions, [Github Discussions](https://github.com/D-Se/ML/discussions) are 
 
 ## Project deliverables
 
--   A data analysis report in **pdf** format,
+-   A data analysis compendium,
 
--   An R package containing `target`-based `tidymodels` approach,
+-   An R package containing `target`-based `tidymodels` and reporting tools,
 
--   A pipeline-generated `bookdown` book,
+-   A pipeline-generated `bookdown` book & `shiny` app,
 
--   Github repository of mock firm & analysis.
-
-## Project visualization
-
-```{r pipeline, results='markup', error=FALSE, prompt=FALSE, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE, fig.align='center', out.extra='angle=90',comment=""}
-### TODO: annotate visnetwork with time of last model run
-suppressMessages(
-targets::tar_visnetwork(
-  label = "time"
-)
-)
-```
-
-In this image there are already over 25 000 different models, implemented using 12 modelling packages! It is the result of applying best practices in R to achieve scalable computing and manageble workflows. Each node represents a step in the `targets` core pipeline. When an edit is made to a file, the pipeline identifies those nodes that need to be updated. For example, if a set of the models fails, in red, the code needs to be looked at. Dependencies of this code are rerun once the models succeed. An example of such dependency is this book, which in itself is *parameterized*.  
-
-*keras* neural nets, *MARS*, *Random Forests*, *SVM* are already part of the `ML` API. This project uses `R` & `C++` for computation, `JavaScript`, `HTML` & `CSS` for reporting, `YAML`, `TeX` and `AWK` for text formatting. Whether you like **modelling**, **visualizing**, or **communicating**, this projects offers the chance to explore best R practices. And the best part? We don't have to leave RStudio at all for any of it.
-
-
-::: community
+-   Persistent Github repository for future publishing.
 
 <center>
 
-Here at NJU we are a community. We are open to beginners, advanced users alike. Extensive help documentation is being written to accomodate each group member to be as comfortable and productive as possible! 
+
+```{r, echo=FALSE, fig.cap="Project Outline", out.width = '100%', out.height="100%"}
+knitr::include_graphics('images/project.png')
+```
+
+<!-- ![Project Outline](images/project.png){width=600px; height=500px} -->
 
 </center>
 
+## Project visualization
+
+*click and drag on the image to inspect or move nodes!*
+
+```{r pipeline, eval=TRUE, include=FALSE}
+### TODO: annotate visnetwork with time of last model run
+# This chunk is split in two to avoid S3 error issue, see https://github.com/D-Se/ML/issues/13
+p <- targets::tar_visnetwork(label = "time")
+```
+
+```{r pipeline_plot, echo=FALSE, fig.keep='all', eval=TRUE, fig.align='center', out.extra='angle=90',comment="", message=FALSE, error=FALSE}
+p
+```
+
+In this image there are already over 25 000 different models, implemented using 12 modelling packages! Each node represents a step in the `targets` core pipeline.
+
+::: note
+<center>
+When a file in the pipeline is edited, tho dependencies get rerun! 
+</center>
+:::
+
+For example, if a set of the models fails, in red, the code needs to be looked at. Another example of such dependency is **this** book, which in itself is *parameterized*.
+
+*keras* neural nets, *MARS*, *Random Forests*, *SVM* are already part of the `ML` API. This project uses `R` & `C++` for computation, `JavaScript`, `HTML` & `CSS` for reporting, `YAML`, `TeX` and `AWK` for text formatting. Whether you like **modelling**, **visualizing**, or **communicating**, this projects offers the chance to explore best R practices. And the best part? We don't have to leave RStudio at all for any of it.
+
+::: community
+<center>
+
+Here at NJU we are a community. We are open to beginners, advanced users alike. Extensive help documentation is being written to accomodate each group member to be as comfortable and productive as possible!
+
+</center>
 :::
 
 Curious to know more, want to see a live coding example? Send me an email or add me on QQ or WeChat!
-
-

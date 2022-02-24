@@ -1,3 +1,5 @@
+fig:unnamed-chunk-3
+fig:unnamed-chunk-6
 ml
 project-goals
 project-deliverables
@@ -6,7 +8,6 @@ overview
 quick-start
 github-repo
 project-planning
+model-performance
 appendix-a
-dev-exhibition
-sections
 report_a11c3970

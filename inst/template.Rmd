@@ -11,6 +11,9 @@ params:
 
 # `r params$title`
 
+This page depends on *parameters*, its content is **dynamic**, can be manipulated from `shiny`. It is built from a template in which parameters get inserted, then built.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```

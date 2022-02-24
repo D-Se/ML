@@ -1,0 +1,48 @@
+# Model performance
+
+Here is an example constructed from sample data, training 12 different ML models.
+
+::: question
+<center>
+Which model performed the best?
+</center>
+:::
+
+
+```{r}
+library(ggplot2)
+targets::tar_read(ranking) +
+  theme_bw()
+```
+
+A quick overview, obtained from a node in the pipeline.
+
+::: note
+
+<center>
+Always check the actual predictions to look for anomalies!
+</center>
+:::
+
+And to check if the predictions are close to the actual observations, we inspect another node from the pipeline.
+```{r}
+targets::tar_read(visual_verify) +
+  theme_bw()
+```
+
+Looks good. What is the error metric associated with this?
+
+```{r}
+targets::tar_read(metrics)
+```
+
+
+::: question
+<center>
+Looks neat! how do I get this model in my RStudio to test it?
+</center>
+:::
+
+That is the benefit of making your own package.   
+- Simply run `ML::results` to get the best performing model straight into your R session
+- Look at the documentation by running `?results`.

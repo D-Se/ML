@@ -4,8 +4,8 @@ library(targets)
 library(tarchetypes)
 library(ML)
 library(future)
-library(future.callr)
-plan(multisession)
+#library(future.callr)
+#plan(multisession)
 
 tgt <- tar_target
 

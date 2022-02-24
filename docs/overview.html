@@ -6,20 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Overview | Machine Learning in R</title>
 <meta name="author" content="Donald Seinen">
-<meta name="description" content="table {     width: 50%;     text-align: center;   } logo  2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown....">
+<meta name="description" content="2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown. ML is already quite rich in functionality. It: 1. Uses...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Overview | Machine Learning in R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="table {     width: 50%;     text-align: center;   } logo  2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown....">
+<meta property="og:description" content="2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown. ML is already quite rich in functionality. It: 1. Uses...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Overview | Machine Learning in R">
-<meta name="twitter:description" content="table {     width: 50%;     text-align: center;   } logo  2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown....">
+<meta name="twitter:description" content="2.1 Quick start  ML is a scalable data analysis compendium that interfaces to well known APIs like tidyverse, tidymodels, shiny, bookdown. ML is already quite rich in functionality. It: 1. Uses...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<scrpt src="js/anchor.js"><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/style.css"></scrpt>
+<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><scrpt src="js/anchor.js"><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="assets/style.css"></scrpt>
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -43,11 +42,11 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> ML </a></li>
 <li><a class="active" href="overview.html"><span class="header-section-number">2</span> Overview</a></li>
-<li><a class="" href="author.html">About the Authors</a></li>
+<li><a class="" href="model-performance.html"><span class="header-section-number">3</span> Model performance</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="appendix-a.html"><span class="header-section-number">A</span> Appendix A</a></li>
-<li><a class="" href="dev-exhibition.html"><span class="header-section-number">B</span> Dev exhibition</a></li>
-<li><a class="" href="report_a11c3970.html"><span class="header-section-number">C</span> report_a11c3970</a></li>
+<li><a class="" href="author.html">About the Authors</a></li>
+<li><a class="" href="report_a11c3970.html"><span class="header-section-number">B</span> report_a11c3970</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,16 +58,6 @@
 <h1>
 <span class="header-section-number">2</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
 </h1>
-<style>
-
-table {
-        width: 50%;
-        text-align: center;
-    }
-</style>
-<center>
-<p><a href="images/logo.png">logo</a></p>
-</center>
 <div id="quick-start" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> Quick start<a class="anchor" aria-label="anchor" href="#quick-start"><i class="fas fa-link"></i></a>
@@ -86,10 +75,10 @@ It: 1. Uses functional programming - it fetches, validates, transforms and clean
 <li><p>And finally, exports finalized models to end users as convenient objects for inspection and sharing.</p></li>
 </ol>
 <p>To start modelling, use</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"D-Se/ML"</span><span class="op">)</span></code></pre></div>
 <p>Want to retrieve an intermediate step of the analysis pipeline? Sure! Here is <em>an example of a xgboost tree model, displaying its hyperparameters that need tuning.</em></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ML</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/ML/man/analysis.html">analysis</a></span><span class="op">$</span><span class="va">models</span><span class="op">$</span><span class="va">xgb_spec</span>
 <span class="co">#&gt; Boosted Tree Model Specification (regression)</span>
 <span class="co">#&gt; </span>
@@ -111,27 +100,27 @@ It: 1. Uses functional programming - it fetches, validates, transforms and clean
 <span class="header-section-number">2.2</span> Github repo<a class="anchor" aria-label="anchor" href="#github-repo"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <a href="https://github.com/D-Se/ML">Github repo</a> is where the project lives. In it, you can find, among many others, the following files.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb4-1"><a href="overview.html#cb4-1" aria-hidden="true" tabindex="-1"></a>├── .github  &gt;&gt;&gt; github workflows, automated checking</span>
-<span id="cb4-2"><a href="overview.html#cb4-2" aria-hidden="true" tabindex="-1"></a>├── R/  &gt;&gt;&gt; directory for ML package functions.</span>
-<span id="cb4-3"><a href="overview.html#cb4-3" aria-hidden="true" tabindex="-1"></a>├──── ... &gt;&gt;&gt; regular R package functions. o sub-directory allowed.</span>
-<span id="cb4-4"><a href="overview.html#cb4-4" aria-hidden="true" tabindex="-1"></a>├── inst/  &gt;&gt;&gt; supplementary materials for ML package</span>
-<span id="cb4-5"><a href="overview.html#cb4-5" aria-hidden="true" tabindex="-1"></a>├── man/  &gt;&gt;&gt; automatically generated package documentation [NO EDIT]</span>
-<span id="cb4-6"><a href="overview.html#cb4-6" aria-hidden="true" tabindex="-1"></a>├──── figures/ &gt;&gt;&gt; images used</span>
-<span id="cb4-7"><a href="overview.html#cb4-7" aria-hidden="true" tabindex="-1"></a>├── src/  &gt;&gt;&gt; compiled (C++) code used in ML package</span>
-<span id="cb4-8"><a href="overview.html#cb4-8" aria-hidden="true" tabindex="-1"></a>├── tests/  &gt;&gt;&gt; unit tests for package functions</span>
-<span id="cb4-9"><a href="overview.html#cb4-9" aria-hidden="true" tabindex="-1"></a>├──── testthat/ &gt;&gt;&gt; directory of unit test</span>
-<span id="cb4-10"><a href="overview.html#cb4-10" aria-hidden="true" tabindex="-1"></a>├── vignettes/  &gt;&gt;&gt; long-form documentation</span>
-<span id="cb4-11"><a href="overview.html#cb4-11" aria-hidden="true" tabindex="-1"></a>├── .Rbuildignore/ &gt;&gt;&gt; package utility: instruction set to ignore non-standard files</span>
-<span id="cb4-12"><a href="overview.html#cb4-12" aria-hidden="true" tabindex="-1"></a>├── .gitignore  &gt;&gt;&gt; instruction set to RStudio to ignore files in directory for version control</span>
-<span id="cb4-13"><a href="overview.html#cb4-13" aria-hidden="true" tabindex="-1"></a>├── DESCRIPTION  &gt;&gt;&gt; R package metadata file</span>
-<span id="cb4-14"><a href="overview.html#cb4-14" aria-hidden="true" tabindex="-1"></a>├── ML.Rproj  &gt;&gt;&gt; RStudio file [NO EDIT]</span>
-<span id="cb4-15"><a href="overview.html#cb4-15" aria-hidden="true" tabindex="-1"></a>├── NAMESPACE  &gt;&gt;&gt; automatically generated R package build file [NO EDIT]</span>
-<span id="cb4-16"><a href="overview.html#cb4-16" aria-hidden="true" tabindex="-1"></a>├── README.Rmd  &gt;&gt;&gt; Github introduction file with executable R code</span>
-<span id="cb4-17"><a href="overview.html#cb4-17" aria-hidden="true" tabindex="-1"></a>├── README.md &gt;&gt;&gt; automatically generated Github introduction file [NO EDIT]</span>
-<span id="cb4-18"><a href="overview.html#cb4-18" aria-hidden="true" tabindex="-1"></a>├── run.sh  &gt;&gt;&gt; shell script to execture pipeline</span>
-<span id="cb4-19"><a href="overview.html#cb4-19" aria-hidden="true" tabindex="-1"></a>├── run.R  &gt;&gt;&gt;</span>
-<span id="cb4-20"><a href="overview.html#cb4-20" aria-hidden="true" tabindex="-1"></a>├── _targets.R  # core pipeline</span>
-<span id="cb4-21"><a href="overview.html#cb4-21" aria-hidden="true" tabindex="-1"></a>└── report.Rmd  </span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb3-1"><a href="overview.html#cb3-1" aria-hidden="true" tabindex="-1"></a>├── .github  &gt;&gt;&gt; github workflows, automated checking</span>
+<span id="cb3-2"><a href="overview.html#cb3-2" aria-hidden="true" tabindex="-1"></a>├── R/  &gt;&gt;&gt; directory for ML package functions.</span>
+<span id="cb3-3"><a href="overview.html#cb3-3" aria-hidden="true" tabindex="-1"></a>├──── ... &gt;&gt;&gt; regular R package functions. o sub-directory allowed.</span>
+<span id="cb3-4"><a href="overview.html#cb3-4" aria-hidden="true" tabindex="-1"></a>├── inst/  &gt;&gt;&gt; supplementary materials for ML package</span>
+<span id="cb3-5"><a href="overview.html#cb3-5" aria-hidden="true" tabindex="-1"></a>├── man/  &gt;&gt;&gt; automatically generated package documentation [NO EDIT]</span>
+<span id="cb3-6"><a href="overview.html#cb3-6" aria-hidden="true" tabindex="-1"></a>├──── figures/ &gt;&gt;&gt; images used</span>
+<span id="cb3-7"><a href="overview.html#cb3-7" aria-hidden="true" tabindex="-1"></a>├── src/  &gt;&gt;&gt; compiled (C++) code used in ML package</span>
+<span id="cb3-8"><a href="overview.html#cb3-8" aria-hidden="true" tabindex="-1"></a>├── tests/  &gt;&gt;&gt; unit tests for package functions</span>
+<span id="cb3-9"><a href="overview.html#cb3-9" aria-hidden="true" tabindex="-1"></a>├──── testthat/ &gt;&gt;&gt; directory of unit test</span>
+<span id="cb3-10"><a href="overview.html#cb3-10" aria-hidden="true" tabindex="-1"></a>├── vignettes/  &gt;&gt;&gt; long-form documentation</span>
+<span id="cb3-11"><a href="overview.html#cb3-11" aria-hidden="true" tabindex="-1"></a>├── .Rbuildignore/ &gt;&gt;&gt; package utility: instruction set to ignore non-standard files</span>
+<span id="cb3-12"><a href="overview.html#cb3-12" aria-hidden="true" tabindex="-1"></a>├── .gitignore  &gt;&gt;&gt; instruction set to RStudio to ignore files in directory for version control</span>
+<span id="cb3-13"><a href="overview.html#cb3-13" aria-hidden="true" tabindex="-1"></a>├── DESCRIPTION  &gt;&gt;&gt; R package metadata file</span>
+<span id="cb3-14"><a href="overview.html#cb3-14" aria-hidden="true" tabindex="-1"></a>├── ML.Rproj  &gt;&gt;&gt; RStudio file [NO EDIT]</span>
+<span id="cb3-15"><a href="overview.html#cb3-15" aria-hidden="true" tabindex="-1"></a>├── NAMESPACE  &gt;&gt;&gt; automatically generated R package build file [NO EDIT]</span>
+<span id="cb3-16"><a href="overview.html#cb3-16" aria-hidden="true" tabindex="-1"></a>├── README.Rmd  &gt;&gt;&gt; Github introduction file with executable R code</span>
+<span id="cb3-17"><a href="overview.html#cb3-17" aria-hidden="true" tabindex="-1"></a>├── README.md &gt;&gt;&gt; automatically generated Github introduction file [NO EDIT]</span>
+<span id="cb3-18"><a href="overview.html#cb3-18" aria-hidden="true" tabindex="-1"></a>├── run.sh  &gt;&gt;&gt; shell script to execture pipeline</span>
+<span id="cb3-19"><a href="overview.html#cb3-19" aria-hidden="true" tabindex="-1"></a>├── run.R  &gt;&gt;&gt;</span>
+<span id="cb3-20"><a href="overview.html#cb3-20" aria-hidden="true" tabindex="-1"></a>├── _targets.R  # core pipeline</span>
+<span id="cb3-21"><a href="overview.html#cb3-21" aria-hidden="true" tabindex="-1"></a>└── report.Rmd  </span></code></pre></div>
 <p>The project is split up into segments, each ending with finishing a deliverable. These steps can be found in the <a href="https://github.com/D-Se/ML/milestones">milestones</a> section of the repo. The milestones are made up of collections of <a href="https://github.com/D-Se/ML/issues">issues</a>. These are tasks assigned to project members, and can be added by any person with access rights to the repo. <a href="https://github.com/D-Se/ML/labels">labels</a> are placed on issues to make it easy to find and assign tasks. Each issue is allocated a <em>difficulty</em> and <em>priority</em> label, and further labels were appropriate.</p>
 </div>
 <div id="project-planning" class="section level2" number="2.3">
@@ -140,46 +129,51 @@ It: 1. Uses functional programming - it fetches, validates, transforms and clean
 </h2>
 <p>In such a large scale approach where multiple people contribute models, code, opinions et cetera it is important to keep track of who does what, and how things are going.</p>
 <p>To keep our focus straight, automation tools are available, such as <em>Github</em> commit-tracking to give insights who <em>exactly</em> did what, when.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb5-1"><a href="overview.html#cb5-1" aria-hidden="true" tabindex="-1"></a>#!/usr/bin/bash sh</span>
-<span id="cb5-2"><a href="overview.html#cb5-2" aria-hidden="true" tabindex="-1"></a># count lines of code per contributor to github repo in main .rmd files</span>
-<span id="cb5-3"><a href="overview.html#cb5-3" aria-hidden="true" tabindex="-1"></a>contr () {</span>
-<span id="cb5-4"><a href="overview.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  local perfile="false";</span>
-<span id="cb5-5"><a href="overview.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  if [[ $1 = "-f" ]]; then</span>
-<span id="cb5-6"><a href="overview.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  perfile="true";</span>
-<span id="cb5-7"><a href="overview.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  shift;</span>
-<span id="cb5-8"><a href="overview.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  fi;</span>
-<span id="cb5-9"><a href="overview.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  if [[ $# -eq 0 ]]; then</span>
-<span id="cb5-10"><a href="overview.html#cb5-10" aria-hidden="true" tabindex="-1"></a>          echo "no files given!" 1&gt;&amp;2;</span>
-<span id="cb5-11"><a href="overview.html#cb5-11" aria-hidden="true" tabindex="-1"></a>        return 1;</span>
-<span id="cb5-12"><a href="overview.html#cb5-12" aria-hidden="true" tabindex="-1"></a>        else</span>
-<span id="cb5-13"><a href="overview.html#cb5-13" aria-hidden="true" tabindex="-1"></a>          local f; {</span>
-<span id="cb5-14"><a href="overview.html#cb5-14" aria-hidden="true" tabindex="-1"></a>            for f in "$@";</span>
-<span id="cb5-15"><a href="overview.html#cb5-15" aria-hidden="true" tabindex="-1"></a>            do</span>
-<span id="cb5-16"><a href="overview.html#cb5-16" aria-hidden="true" tabindex="-1"></a>            echo "$f";</span>
-<span id="cb5-17"><a href="overview.html#cb5-17" aria-hidden="true" tabindex="-1"></a>            git blame --show-email "$f" |</span>
-<span id="cb5-18"><a href="overview.html#cb5-18" aria-hidden="true" tabindex="-1"></a>              sed -nE 's/^[^ ]* *.&lt;([^&gt;]*)&gt;.*$/: \1/p' |</span>
-<span id="cb5-19"><a href="overview.html#cb5-19" aria-hidden="true" tabindex="-1"></a>              sort | uniq -c | sort -r -nk1;</span>
-<span id="cb5-20"><a href="overview.html#cb5-20" aria-hidden="true" tabindex="-1"></a>            done</span>
-<span id="cb5-21"><a href="overview.html#cb5-21" aria-hidden="true" tabindex="-1"></a>          } | if [[ "$perfile" = "true" ]]; then</span>
-<span id="cb5-22"><a href="overview.html#cb5-22" aria-hidden="true" tabindex="-1"></a>        tee /tmp/s.txt;</span>
-<span id="cb5-23"><a href="overview.html#cb5-23" aria-hidden="true" tabindex="-1"></a>        else</span>
-<span id="cb5-24"><a href="overview.html#cb5-24" aria-hidden="true" tabindex="-1"></a>          tee /tmp/s.txt &gt; /dev/null;</span>
-<span id="cb5-25"><a href="overview.html#cb5-25" aria-hidden="true" tabindex="-1"></a>        fi;</span>
-<span id="cb5-26"><a href="overview.html#cb5-26" aria-hidden="true" tabindex="-1"></a>        awk -v FS='*: *' '/^ *[0-9]/{sums[$2] += $1} END {</span>
-<span id="cb5-27"><a href="overview.html#cb5-27" aria-hidden="true" tabindex="-1"></a>        for (i in sums) printf("%7s : %s\n", sums[i], i)</span>
-<span id="cb5-28"><a href="overview.html#cb5-28" aria-hidden="true" tabindex="-1"></a>        }' /tmp/s.txt |</span>
-<span id="cb5-29"><a href="overview.html#cb5-29" aria-hidden="true" tabindex="-1"></a>          sort -r -nk1;</span>
-<span id="cb5-30"><a href="overview.html#cb5-30" aria-hidden="true" tabindex="-1"></a>        fi</span>
-<span id="cb5-31"><a href="overview.html#cb5-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-32"><a href="overview.html#cb5-32" aria-hidden="true" tabindex="-1"></a>find . -iname '*.Rmd' | while read file; do contr -f "$file"; done &gt; dev/counts.txt</span></code></pre></div>
-<p>Hmm, I see there might be an issue! Let’s deal with them through Github.</p>
-<div class="inline-figure"><img src="images/Issue.png" title="Github repo"></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default"><code class="sourceCode default"><span id="cb4-1"><a href="overview.html#cb4-1" aria-hidden="true" tabindex="-1"></a>#!/usr/bin/bash sh</span>
+<span id="cb4-2"><a href="overview.html#cb4-2" aria-hidden="true" tabindex="-1"></a># count lines of code per contributor to github repo in main .rmd files</span>
+<span id="cb4-3"><a href="overview.html#cb4-3" aria-hidden="true" tabindex="-1"></a>contr () {</span>
+<span id="cb4-4"><a href="overview.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  local perfile="false";</span>
+<span id="cb4-5"><a href="overview.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  if [[ $1 = "-f" ]]; then</span>
+<span id="cb4-6"><a href="overview.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  perfile="true";</span>
+<span id="cb4-7"><a href="overview.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  shift;</span>
+<span id="cb4-8"><a href="overview.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  fi;</span>
+<span id="cb4-9"><a href="overview.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  if [[ $# -eq 0 ]]; then</span>
+<span id="cb4-10"><a href="overview.html#cb4-10" aria-hidden="true" tabindex="-1"></a>          echo "no files given!" 1&gt;&amp;2;</span>
+<span id="cb4-11"><a href="overview.html#cb4-11" aria-hidden="true" tabindex="-1"></a>        return 1;</span>
+<span id="cb4-12"><a href="overview.html#cb4-12" aria-hidden="true" tabindex="-1"></a>        else</span>
+<span id="cb4-13"><a href="overview.html#cb4-13" aria-hidden="true" tabindex="-1"></a>          local f; {</span>
+<span id="cb4-14"><a href="overview.html#cb4-14" aria-hidden="true" tabindex="-1"></a>            for f in "$@";</span>
+<span id="cb4-15"><a href="overview.html#cb4-15" aria-hidden="true" tabindex="-1"></a>            do</span>
+<span id="cb4-16"><a href="overview.html#cb4-16" aria-hidden="true" tabindex="-1"></a>            echo "$f";</span>
+<span id="cb4-17"><a href="overview.html#cb4-17" aria-hidden="true" tabindex="-1"></a>            git blame --show-email "$f" |</span>
+<span id="cb4-18"><a href="overview.html#cb4-18" aria-hidden="true" tabindex="-1"></a>              sed -nE 's/^[^ ]* *.&lt;([^&gt;]*)&gt;.*$/: \1/p' |</span>
+<span id="cb4-19"><a href="overview.html#cb4-19" aria-hidden="true" tabindex="-1"></a>              sort | uniq -c | sort -r -nk1;</span>
+<span id="cb4-20"><a href="overview.html#cb4-20" aria-hidden="true" tabindex="-1"></a>            done</span>
+<span id="cb4-21"><a href="overview.html#cb4-21" aria-hidden="true" tabindex="-1"></a>          } | if [[ "$perfile" = "true" ]]; then</span>
+<span id="cb4-22"><a href="overview.html#cb4-22" aria-hidden="true" tabindex="-1"></a>        tee /tmp/s.txt;</span>
+<span id="cb4-23"><a href="overview.html#cb4-23" aria-hidden="true" tabindex="-1"></a>        else</span>
+<span id="cb4-24"><a href="overview.html#cb4-24" aria-hidden="true" tabindex="-1"></a>          tee /tmp/s.txt &gt; /dev/null;</span>
+<span id="cb4-25"><a href="overview.html#cb4-25" aria-hidden="true" tabindex="-1"></a>        fi;</span>
+<span id="cb4-26"><a href="overview.html#cb4-26" aria-hidden="true" tabindex="-1"></a>        awk -v FS='*: *' '/^ *[0-9]/{sums[$2] += $1} END {</span>
+<span id="cb4-27"><a href="overview.html#cb4-27" aria-hidden="true" tabindex="-1"></a>        for (i in sums) printf("%7s : %s\n", sums[i], i)</span>
+<span id="cb4-28"><a href="overview.html#cb4-28" aria-hidden="true" tabindex="-1"></a>        }' /tmp/s.txt |</span>
+<span id="cb4-29"><a href="overview.html#cb4-29" aria-hidden="true" tabindex="-1"></a>          sort -r -nk1;</span>
+<span id="cb4-30"><a href="overview.html#cb4-30" aria-hidden="true" tabindex="-1"></a>        fi</span>
+<span id="cb4-31"><a href="overview.html#cb4-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-32"><a href="overview.html#cb4-32" aria-hidden="true" tabindex="-1"></a>find . -iname '*.Rmd' | while read file; do contr -f "$file"; done &gt; dev/counts.txt</span></code></pre></div>
+<p>Hmm, I see there might be an issue! Let’s deal with them through Github!</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="images/issues.png" alt="Github repository issues pane" width="100%" height="100%"><p class="caption">
+Figure 2.1: Github repository issues pane
+</p>
+</div>
 
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html"><span class="header-section-number">1</span> ML </a></div>
-<div class="next"><a href="author.html">About the Authors</a></div>
+<div class="next"><a href="model-performance.html"><span class="header-section-number">3</span> Model performance</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -203,7 +197,7 @@ It: 1. Uses functional programming - it fetches, validates, transforms and clean
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning in R</strong>" was written by Donald Seinen. It was last built on 2022-02-23.</p>
+    <p>"<strong>Machine Learning in R</strong>" was written by Donald Seinen. It was last built on 2022-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

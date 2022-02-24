@@ -1,6 +1,10 @@
 
 # report_a11c3970
 
+This page depends on *parameters*, its content is **dynamic**, can be
+manipulated from `shiny`. It is built from a template in which
+parameters get inserted, then built.
+
 ![](C:/Users/D/Documents/R/NJU/ML/_chapters/report_a11c3970_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
     ## 

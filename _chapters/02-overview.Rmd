@@ -1,20 +1,5 @@
 # Overview {#overview}
 
-```{=html}
-<style>
-
-table {
-        width: 50%;
-        text-align: center;
-    }
-</style>
-```
-<center>
-
-[logo](images/logo.png)
-
-</center>
-
 ## Quick start
 
 ::: package
@@ -121,6 +106,9 @@ contr () {
 find . -iname '*.Rmd' | while read file; do contr -f "$file"; done > dev/counts.txt
 ```
 
-Hmm, I see there might be an issue! Let's deal with them through Github.
+Hmm, I see there might be an issue! Let's deal with them through Github!
 
-![](images/Issue.png "Github repo")
+```{r echo=FALSE, fig.cap="Github repository issues pane", out.width = '100%', out.height="100%"}
+knitr::include_graphics("images/issues.png")
+```
+

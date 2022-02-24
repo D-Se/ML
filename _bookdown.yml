@@ -10,8 +10,8 @@ rmd_files:
 - "index.Rmd"
 # - "_chapters/00-executive-summary.Rmd"
 - "_chapters/02-overview.Rmd"
-- "_chapters/01-authors.Rmd"
+- "_chapters/@model_performance.Rmd"
 - "_chapters/@appendix.Rmd"
-- "dev/sample.Rmd"
+- "_chapters/01-authors.Rmd"
 # FIXME place parameterized at a reasonable position
 # parameterized gets added after this
