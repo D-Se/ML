@@ -39,10 +39,15 @@ targets::tar_read(metrics)
 
 ::: question
 <center>
-Looks neat! how do I get this model in my RStudio to test it?
+Looks neat! how do I get this model in my RStudio to test it? What are the model parameters?
 </center>
 :::
 
 That is the benefit of making your own package.   
 - Simply run `ML::results` to get the best performing model straight into your R session
 - Look at the documentation by running `?results`.
+
+
+```{r}
+ML::results
+```
