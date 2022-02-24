@@ -1,6 +1,7 @@
 fig:unnamed-chunk-3
 fig:unnamed-chunk-6
 ml
+project-goals
 project-deliverables
 project-visualization
 overview
