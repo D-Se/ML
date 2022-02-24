@@ -12,6 +12,3 @@ bookdown::bs4_book:
     facebook: no
     all: no
 documentclass: book
-link-citations: yes
-bibliography: [references.bib, packages.bib]
-biblio-style: apalike

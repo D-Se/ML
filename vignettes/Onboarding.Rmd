@@ -35,14 +35,6 @@ h1 {
 
 # Welcome!
 
-<center>
-
-```{r logo, echo=FALSE, out.height="10%", out.width="10%"}
-knitr::include_graphics("images/logo.png")
-```
-
-</center>
-
 Hi there! Glad to have you on board. This is a guide to help you help us. If anything is unclear, questions can be asked by posting on [Github Discussions](https://github.com/D-Se/ML/discussions), or by sending an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.
 
 ## Project Goals

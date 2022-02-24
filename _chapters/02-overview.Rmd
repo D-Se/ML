@@ -109,6 +109,6 @@ find . -iname '*.Rmd' | while read file; do contr -f "$file"; done > dev/counts.
 Hmm, I see there might be an issue! Let's deal with them through Github!
 
 ```{r echo=FALSE, fig.cap="Github repository issues pane", out.width = '100%', out.height="100%"}
-knitr::include_graphics("images/issues.png")
+knitr::include_graphics("assets/images/issues.png")
 ```
 
