@@ -53,7 +53,7 @@ knitr::include_graphics("images/donald.jpg")
 ```
 
 <!-- mae this a small font somewhere else -->
-To see this books (and `ML`) source code, see [Github repo](https://github.com/D-Se/ML).
+To see this books (and `ML`) source code, see [Github repo](https://github.com/D-Se/ML).  
 ## Project Goals
 
 -   *Deliver* a **scalable**, **reproducible** and **continuously integrated** data analysis compendium that:
