@@ -1,0 +1,217 @@
+---
+title: "Onboarding"
+output:
+  rmarkdown::html_document:
+    toc: true
+    number_sections: true
+---
+
+```{css, echo=FALSE}
+body .main-container {
+  max-width: 1280px !important;
+  width: 1280px !important;
+}
+body {
+  max-width: 1280px !important;
+}
+
+h1 {
+  text-align: center;
+}
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Welcome!
+
+Hi there! Glad to have you on board. This is a guide to help you help us. If anything is unclear, questions can be asked by posting on [Github Discussions](https://github.com/D-Se/ML/discussions), or by sending an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.
+
+
+## Getting started
+
+1.  Install project tools and dependencies by running `devtools::install_github("D-Se/ML")` in the R console. This might require you to install `tensorflow` separately.
+
+2.  Connect RStudio to github ([guide](https://happygitwithr.com/rstudio-git-github.html)).
+
+3.  Hop to the *dev* branch of the github repository.
+
+4.  Find [issues](https://github.com/D-Se/ML/issues) to solve (picked by you or assigned to you).
+
+# About the project
+
+## Tools
+
+### Languages
+- **R** for most of its computations, **C++** where speed is important.
+- **HTML, CSS & JavaScript** for making stylish documents.
+- **YAML** is used in *rmarkdown* for metadata description.
+
+### R packages
+
+This is a (partial) list of packages used in the project at various stages:
+
+#### Reporting packages
+
++--------------+---------------------------+-----------------------------------------------+
+| Package      | Description               | Resources                                     |
++==============+===========================+===============================================+
+| `ggplot2`    | Data visualization        |                                               |
++--------------+---------------------------+-----------------------------------------------+
+| `plotly`     | Interactive plots         |                                               |
++--------------+---------------------------+-----------------------------------------------+
+| `visNetwork` | Ntwork graphs             |                                               |
++--------------+---------------------------+-----------------------------------------------+
+| `rmarkdown`  | Markdown with an R accent | [Book](https://bookdown.org/yihui/rmarkdown/) |
++--------------+---------------------------+-----------------------------------------------+
+| `bookdown`   |                           |                                               |
++--------------+---------------------------+-----------------------------------------------+
+| `shiny`      | Web application framework |                                               |
++--------------+---------------------------+-----------------------------------------------+
+
+#### Modelling packages
+
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| Package     | Description                              | Resources                                                              |
++=============+==========================================+========================================================================+
+| `keras`     | APi to `tensorflow` neural nets          | [keras](https://keras.io/) ; [TensorFlow](https://www.tensorflow.org/) |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `rpart`     | Regression trees                         |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `glmnet`    | Penalized maximum likelihood models      |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `earth`     | Multivariate Adaptive Regression Splines |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `rsample`   | Data sampling                            |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `recipes`   | Pre-processor specification              | [Book](https://www.tmwr.org/)                                          |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `parsnip`   | Model specification                      |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `tune`      | Hyper parameter tuning                   |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+| `workflows` |                                          |                                                                        |
++-------------+------------------------------------------+------------------------------------------------------------------------+
+
+#### Package development
+
++---------------+--------------------------------+----------------------------------------------------------------------+
+| Package       | Description                    | Resources                                                            |
++===============+================================+======================================================================+
+| `targets`     | Make-like pipeline toolkit     | [Book](https://books.ropensci.org/targets/)                          |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `tarchetypes` | Function-oriented `targets`    |                                                                      |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `rlang`       | Tidyverse programming toolbox  |                                                                      |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `testthat`    | Unit testing                   | [Book](https://r-pkgs.org/tests.html)                                |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `lifecycle`   | function life cycle management |                                                                      |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `future`      | Parallel processing framework  |                                                                      |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `promises`    | Asynchronous programming       | [website](https://rstudio.github.io/promises/articles/overview.html) |
++---------------+--------------------------------+----------------------------------------------------------------------+
+| `crayon`      | Pretty console printing        |                                                                      |
++---------------+--------------------------------+----------------------------------------------------------------------+
+
+## Github repo
+
+The [Github repo](https://github.com/D-Se/ML) is where the project lives. In it, you can find the following files. This may change in future releases.
+
+### General
+├─_targets {all objects and metadata of the `targets` pipeline.}
+├─_targets.R {Project workflow file.}
+├─.github {Folder for *Github workflows*, code that is run everytime a new commit is made to the repo.}  
+├── check-standard.yml {runs R CMD check to see if R package can be installed on Windows, OS and Linux.}  
+├── lint-project.yml {Static code analysis, checks language in code. See the `lintr` package}  
+├─.gitignore {Ignored files. Files stored on your computer that will not be sent to Github repository.}  
+├─ ML.Rproj {File that can be opened with RStudio, tells the setup.}
+
+### Book-related
+├─ _book  
+├── ... {Book output files created by `tar_make()`. It includes copies of other files. Click $\color{green}{\text{ index.html}}$ to view it.}  
+├─_bookdown.yml {specifies the order of files in the book.}  
+├─_chapters {The *rmarkdown* files, book chapters. *report_xx* is dynamically generated, its contents may change.}  
+├─_common.R {R functions that are run before each chapter of the book.}  
+├─_output.yml {Options for creating different output book and formats.}  
+├─ js {JavaScript files to make the book look good.}  
+├─ assets {Folder for images. and CSS styling used in markdown files.}  
+├─ inst {Extra book materials. Insert any references into the *xx.bib* files.}  
+├─ index.Rmd {The first file in the book, }  
+
+### Package-related
+An R package requires many different files in specific locations, for historical reasons.
+├─ DESCRIPTION {`ML` package metadata.}  
+├─ NAMESPACE {Control which functions are available to users who use `library("ML")`}  
+├─ NEWS.md {Historical news of version releases}  
+├─ README.Rmd {R markdown-enabled package introduction. Can run R code within.}  
+├─ README.md {Package introduction for *Github* first page introduction.}  
+├─ R {All R code used in the `ML` package. Cannot contain subfolders.}  
+├── data.R {Data sets available, created from the *_targets* directory. Edit with `usethis::use_data(object, overwrite = F)`.}  
+├── ML-package.R {Package introduction used for help files.}  
+├── modelling_x.R {Code to make models of a certain type.}  
+├── reporting_x.R {Helper functions to make good looking reports and book.}  
+├── utils.R {Helper functions that are useful in multiple other .R files. Never exported.}
+├── visualization.R {Functions specifically for plotting and graphs.}  
+├─ man {Directly for help files, automatically generated by `devtools::document()` based on the *roxygen2* comments that look like `#' @something blabla`.}  
+├─ src {C++ functions.}  
+├─ tests {Folder for unit tests to check if functions in `ML` are working properly.}  
+├── vignettes {Long-form documentation available to users who run `library(ML`).}  
+
+The project is split up into segments, each ending with finishing a deliverable. These steps can be found in the [milestones](https://github.com/D-Se/ML/milestones) section of the repo. The milestones are made up of collections of [issues](https://github.com/D-Se/ML/issues). These are tasks assigned to project members, and can be added by any person with access rights to the repo. [labels](https://github.com/D-Se/ML/labels) are placed on issues to make it easy to find and assign tasks. Each issue is allocated a *difficulty* and *priority* label, and further labels were appropriate.
+
+# External Resources - learning & finding help
+
+## R resources
+
+-   [Link portal](https://www.bigbookofr.com/index.html)
+
+-   [Book selection](https://bookdown.org/home/archive/)
+
+## Visualization
+
+-   [R Graph gallery](https://www.r-graph-gallery.com/)
+
+## Modelling
+
+-   [Feature Engineering & Selection](https://bookdown.org/max/FES/)
+-   [Deep Learning](https://github.com/janishar/mit-deep-learning-book-pdf/tree/master/complete-book-pdf)
+
+## Reporting
+
+-   [rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+-   [markdown custom styling](https://holtzy.github.io/Pimp-my-rmd/)
+
+# Productivity tips
+
+A list of useful version controlled R project commands:
+
+-   `devtools::document()` to update (locally) the package using `roxygen2.`
+
+-   `lintr::lint_dir()` to use static code analysis for code formatting checks.
+
+`lintr` is useful to check code style line-by-line and make adjustments on the fly. It will open an interface in the RStudio *Markers* pane where individual lines can be clicked. On a click, the relevant code snippet will be opened in the editor. This command is also run automatically on commits to the master branch of Github repo, viewable as comments in the Github Actions pane.
+
+-   `covr::report()` for visual inspection of unit test coverage.
+
+-   `usethis::edit_r_profile()` to run functions on startup.
+
+An example of Donald's ML-project specific R profile line: runs `library(devtools)` and imports specific `targets` functions as an alias for brevity.
+
+```{r sampleRprofile, eval=FALSE, include=TRUE}
+if (tryCatch(endsWith(readLines("DESCRIPTION", 1), "ML"), warning = function(x) F)) {
+  #library(devtools, quietly = T)
+  cat("loading devtools & select targets functions\n")
+  box::use(
+    devtools[...],
+    targets[make = tar_make,
+            make_future = tar_make_future,
+            grab = tar_read]
+  )
+}
+```
