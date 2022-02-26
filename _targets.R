@@ -6,7 +6,10 @@ library(ML)
 library(future)
 #library(future.callr)
 #plan(multisession)
-
+# 
+# files = list.files("R")
+# files = paste0("R/", files[!files %in% c("data.R", "ML-package.R")])
+# sapply(files, source, .GlobalEnv)
 tgt <- tar_target
 
 ### TODO: read actual data from external source in a tgt()
