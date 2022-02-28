@@ -32,6 +32,7 @@ targets::tar_read(visual_verify) +
 
 Looks good. What is the error metric associated with this?
 
+
 ```{r}
 targets::tar_read(metrics)
 ```

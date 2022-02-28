@@ -6,7 +6,10 @@ library(ML)
 library(future)
 #library(future.callr)
 #plan(multisession)
-
+# 
+# files = list.files("R")
+# files = paste0("R/", files[!files %in% c("data.R", "ML-package.R")])
+# sapply(files, source, .GlobalEnv)
 tgt <- tar_target
 
 ### TODO: read actual data from external source in a tgt()
@@ -207,42 +210,42 @@ list(
   ####   Keras    #####
   #####################
   #' @note keras neural network starts here
-  ,
-  tar_target(
-    keras_rec,
-    prepare_recipe(train),
-    format = "qs",
-    deployment = "main"
-  ),
-  tar_target(
-    units,
-    c(16, 32),
-    deployment = "main"
-  ),
-  tar_target(
-    act,
-    c("relu", "sigmoid"),
-    deployment = "main"
-  ),
-  tar_target(
-    run,
-    test_model(init, keras_rec, units1 = units, act1 = act),
-    pattern = cross(units, act),
-    format = "fst_tbl"
-  ),
-  tar_target(
-    best_run,
-    run %>%
-      top_n(1, accuracy) %>%
-      head(1),
-    format = "fst_tbl",
-    deployment = "main"
-  ),
-  tar_target(
-    best_model,
-    train_best_model(best_run, keras_rec),
-    format = "keras"
-  )
+  # ,
+  # tar_target(
+  #   keras_rec,
+  #   prepare_recipe(train),
+  #   format = "qs",
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   units,
+  #   c(16, 32),
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   act,
+  #   c("relu", "sigmoid"),
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   run,
+  #   test_model(init, keras_rec, units1 = units, act1 = act),
+  #   pattern = cross(units, act),
+  #   format = "fst_tbl"
+  # ),
+  # tar_target(
+  #   best_run,
+  #   run %>%
+  #     top_n(1, accuracy) %>%
+  #     head(1),
+  #   format = "fst_tbl",
+  #   deployment = "main"
+  # ),
+  # tar_target(
+  #   best_model,
+  #   train_best_model(best_run, keras_rec),
+  #   format = "keras"
+  # )
   
   #####################
   ####  Bookdown  #####
@@ -252,7 +255,7 @@ list(
   ,
   tar_files(
     paths,
-    dir('data', full.names = TRUE)[2]
+    dir("data", full.names = TRUE)[2]
   ),
   tgt(
     raw_data,
@@ -274,7 +277,7 @@ list(
     lm(Ozone ~ Wind + Temp, data),
     pattern = map(data)),
   
-  tar_file(template, 'inst/template.Rmd'),
+  tar_file(template, "inst/template.Rmd"),
   
   tgt(
     report,
@@ -289,10 +292,10 @@ list(
       output_dir = "_chapters") %>%
       change_ext(inext = "md", outext = "Rmd"),
     pattern = map(hist, fit),
-    format = 'file'
+    format = "file"
   ),
   
-  tar_file(index, 'index.Rmd'),
+  tar_file(index, "index.Rmd"),
   
   tar_target(
     book,

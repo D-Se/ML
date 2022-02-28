@@ -1,5 +1,5 @@
 rmd_subdir: "_chapters"
-output_dir: "docs/"
+output_dir: "_book"
 delete_merged_file: true
 
 language:

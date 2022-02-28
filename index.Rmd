@@ -1,9 +1,12 @@
 ---
-title: "Machine Learning in R"
+title: "Applied Machine Learning in R"
 description: |
-  This book is a maximum reproducible example of analysis pipelines in R.
+  This book is a continuous integration of a data analysis project.
 author: "Donald Seinen"
 date: "`r Sys.Date()`"
+bibliography: ["inst/books.bib", "inst/packages.bib", "inst/articles.bib"]
+link-citations: yes
+biblio-style: apalike
 ---
 
 ```{r, include = FALSE}
@@ -13,8 +16,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-
-options(warn=-1)
 ```
 
 # ML <img src="man/figures/logo.png" align="right" height="139"/>
@@ -38,22 +39,8 @@ This repository contains analysis, utilities and workflows for the *NJU 020205D1
 div.green { background-color:#93ed99; border-radius: 5px; padding: 20px;}
 </style>
 ```
-::: green
-<center>
 
-We are currently <B> recruiting! </B>
-
-</center>
-:::
-
-Interested in join? Send an email to `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`, or add on QQ / WeChat. For questions about the project, [Github Discussions](https://github.com/D-Se/ML/discussions) are available.
-
-```{r echo=FALSE, out.width="30%", out.height="30%", fig.align='center'}
-knitr::include_graphics("images/donald.jpg")
-```
-
-<!-- mae this a small font somewhere else -->
-To see this books (and `ML`) source code, see [Github repo](https://github.com/D-Se/ML).  
+The source code is available in this [Github repo](https://github.com/D-Se/ML). For questions, refer to [Github Discussions](https://github.com/D-Se/ML/discussions) or send an e-mail directly to the maintainer of `ML`, `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.  
 
 ## Project Goals
 
@@ -90,7 +77,7 @@ To see this books (and `ML`) source code, see [Github repo](https://github.com/D
 
 
 ```{r, echo=FALSE, fig.cap="Project Outline", out.width = '100%', out.height="100%"}
-knitr::include_graphics('images/project.png')
+knitr::include_graphics("assets/images/project.png")
 ```
 
 <!-- ![Project Outline](images/project.png){width=600px; height=500px} -->
