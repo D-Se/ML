@@ -40,7 +40,7 @@ ML_add <- function(env, ...) {
 #' @param ... arguments passed to `parsnip` model specificatin constructors.
 #'   Empty arguments get converted to `tune::tune()`
 #' @param mode character of length 1, one of *regression* or *classification*
-#' @importFrom tune tune
+#@importFrom tune tune
 #' @export
 mod <- function(fun, engine, ..., mode = "regression") {
   engine <- deparse(substitute(engine))
@@ -49,7 +49,7 @@ mod <- function(fun, engine, ..., mode = "regression") {
     do.call(
       # replace empty argument with tune()
       lapply(substitute(...()), function(x){
-        if(is.name(x)) str2lang("tune()") else x
+        if(is.name(x)) str2lang("tune::tune()") else x
       })) |>
     parsnip::set_engine(engine) |>
     parsnip::set_mode(mode)
@@ -95,17 +95,17 @@ mod <- function(fun, engine, ..., mode = "regression") {
 make_recs <- function(formula, data) {
   list(
     normalized_recipe =
-      recipes::recipe(formula, data) |>
-      recipes::step_normalize(recipes::all_predictors()),
+      recipe(formula, data) |>
+      step_normalize(all_predictors()),
     poly_recipe = 
-      recipes::recipe(formula, data) |>
-      recipes::step_normalize(recipes::all_predictors()) |>
-      recipes::step_poly(recipes::all_predictors()) |> 
-      recipes::step_interact(~ recipes::all_predictors():recipes::all_predictors()),
+      recipe(formula, data) |>
+      step_normalize(all_predictors()) |>
+      step_poly(all_predictors()) |> 
+      step_interact(~all_predictors():all_predictors()),
     keras_recipe = 
-      recipes::recipe(formula, data) |> 
-      recipes::step_normalize(recipes::all_predictors(), - recipes::all_outcomes()) |>
-      recipes::prep()
+      recipe(formula, data) |> 
+      step_normalize(all_predictors(), - all_outcomes()) |>
+      prep()
   )
 }
 

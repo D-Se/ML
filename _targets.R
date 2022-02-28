@@ -39,7 +39,8 @@ tar_option_set(error = "continue", packages = c(
   "bookdown"
 ))
 
-tidymodels::tidymodels_prefer()
+### TODO: Does excluding this impact models?
+#tidymodels::tidymodels_prefer()
 
 list(
   ### TODO: data input step here

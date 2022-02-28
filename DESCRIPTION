@@ -19,6 +19,8 @@ RoxygenNote: 7.1.2
 URL: https://github.com/D-Se/ML
 BugReports: https://github.com/D-Se/ML/issues
 Imports: 
+    lifecycle,
+    keras (>= 2.8.0),
     rlang (>= 1.0.1),
     bookdown (>= 0.24),
     cli (>= 3.2.0),
@@ -33,7 +35,6 @@ Imports:
     workflowsets (>= 0.1.0),
     yardstick (>= 0.0.9)
 Suggests: 
-    lifecycle,
     rmarkdown,
     knitr,
     testthat (>= 3.0.0),
@@ -47,8 +48,7 @@ Suggests:
     kknn (>= 1.3.1),
     kernlab (>= 0.9.29),
     earth (>= 5.3.1),
-    glmnet (>= 4.1.3),
-    keras (>= 2.8.0)
+    glmnet (>= 4.1.3)
 SystemRequirements:
   Python (>= 2.7.0),
   TensorFlow (https://www.tensorflow.org/),

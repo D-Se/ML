@@ -21,3 +21,5 @@
 ^references.bib
 ^app\.R$
 ^rsconnect$
+^_output.yml
+^.nojekyll

@@ -8,7 +8,8 @@ prepare_recipe(data)
 }
 \arguments{
 \item{data}{An \code{rsplit} object.
-with the training and test customer churn data.}
+with the training and test customer churn data.
+@import recipes}
 }
 \value{
 A \code{recipe} object with the preprocessing steps

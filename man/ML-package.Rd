@@ -4,11 +4,11 @@
 \name{ML-package}
 \alias{ML}
 \alias{ML-package}
-\title{ML: Analysis and utility tools for Machine Learning}
+\title{ML: Machine Leanring targets-bookdown pipeline}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Nanjing University Spring 2022 Machine Learning 01 class (020205D17).
+A maximum reproducible example of a machine learning pipeline, package-based workflow implemented for the Nanjing University Spring 2022 Machine Learning 01 class (020205D17).
 }
 \seealso{
 Useful links:
