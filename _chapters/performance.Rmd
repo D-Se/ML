@@ -1,3 +1,16 @@
+# (PART) Model performance {.unnumbered}
+
+# Metrics
+
+- Introduce metrics here
+
+- ROC
+- AUC
+- RMSE
+- MAE
+- Precision
+- Accuracy
+
 # Model performance
 
 Here is an example constructed from sample data, training 12 different ML models.

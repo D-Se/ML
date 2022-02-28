@@ -286,7 +286,8 @@ list(
       params = list(
         histogram = hist,
         model = fit,
-        title = as.character(tar_name())
+        #title = as.character(tar_name())
+        title = "parameterized report"
       ),
       output_file = as.character(tar_name()),
       output_dir = "_chapters") %>%

@@ -2,7 +2,7 @@
 
 <center>
 
-This book, and the code it is built on is the result of the hard work of many.
+This book, and the code it is built on, is the result of the hard work of many.
 
 </center>
 

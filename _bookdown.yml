@@ -6,12 +6,22 @@ language:
   ui:
     chapter_name: "Chapter "
     
-rmd_files: 
-- "index.Rmd"
-# - "_chapters/00-executive-summary.Rmd"
-- "_chapters/02-overview.Rmd"
-- "_chapters/@model_performance.Rmd"
-- "_chapters/@appendix.Rmd"
-- "_chapters/01-authors.Rmd"
+rmd_files: [
+  "index.Rmd",
+  "_chapters/introduction.Rmd",
+  "_chapters/authors.Rmd",
+  "_chapters/package_overview.Rmd",
+  
+  # Discuss aspects of data and expectations placed on them.
+  "_chapters/exploration.Rmd",
+  
+  # Discuss which & why models are included.
+  "_chapters/modeling.Rmd",
+  
+  # Discuss comparison metrics of the models included in the compendium.
+  "_chapters/performance.Rmd",
+  
+  "_chapters/appendix.Rmd",
 # FIXME place parameterized at a reasonable position
 # parameterized gets added after this
+]

@@ -1,0 +1,26 @@
+# (PART) Exploration {.unnumbered}
+
+# Data
+
+A description of the data here.
+- Where did it come from
+- What are the variables
+
+## Data validation
+
+- Data type check
+- Code check
+- Range check: data falls within appropriate range, based on domain knowledge. <!-- see pointblank package -->
+- Consistency check: 
+- Uniqueness check: find out how many duplicates there are.
+
+## Exploratory analysis
+
+- Distributions of variables.
+- Missing data analysis, what type of missingness.
+- Correlation analysis.
+
+
+```{r}
+skimr::skim(targets::tar_read(clean))
+```

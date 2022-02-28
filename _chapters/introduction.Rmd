@@ -1,0 +1,47 @@
+# Compendium {.unnumbered}
+
+## Goals
+
+-   *Deliver* a **scalable**, **reproducible**, **persistent** and **continuously integrated** data analysis compendium that:
+
+    -   *Deploys* Machine Learning algorithms,
+
+    -   *Visualizes* model performances & statistical inference,
+
+    -   *Communicates* findings to target audiences in multiple formats.
+
+-   *Display* best practices of machine learning using **R**, concretely:
+
+    -   *Packaging* approaches using version control,
+
+    -   *Deploying* computationally efficient algorithms,
+
+    -   *Interfacing* modelling & reporting API's,
+
+    -   *Adopting* a functional programming mindset.
+
+## the Pipeline
+
+*click and drag on the image to inspect or move nodes!*
+
+```{r pipeline, eval=TRUE, include=FALSE}
+### TODO: annotate visnetwork with time of last model run
+# This chunk is split in two to avoid S3 error issue, see https://github.com/D-Se/ML/issues/13
+p <- targets::tar_visnetwork(label = "time")
+```
+
+```{r pipeline_plot, echo=FALSE, fig.keep='all', eval=TRUE, fig.align='center', out.extra='angle=90',comment="", message=FALSE, error=FALSE}
+p
+```
+
+<!--
+count number of different models dynamically here
+-->
+
+::: note
+<center>
+When a file in the pipeline is edited, the dependencies get rerun and results are updated! 
+</center>
+:::
+
+An example of such dependency is **this** *parameterized* book. If new data is added, the next time the pipeline is run, it gets cleaned, the relevant models get rerun and the book chapters get updated.
