@@ -1,5 +1,5 @@
 Package: ML
-Title: Analysis and utility tools for Machine Learning
+Title: Machine Leanring targets-bookdown pipeline
 Version: 0.0.1
 Date: 2022-02-19
 Authors@R:
@@ -10,33 +10,45 @@ Authors@R:
              comment = c(ORCID = "0000-0002-4343-5851"))
   )
 Maintainer: Donald Seinen <2869830202@qq.com>
-Description: Nanjing University Spring 2022 Machine Learning 01 class (020205D17).
+Description: A maximum reproducible example of a machine learning pipeline,
+  package-based workflow implemented for the Nanjing University Spring 2022 
+  Machine Learning 01 class (020205D17).
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.1.2
 URL: https://github.com/D-Se/ML
 BugReports: https://github.com/D-Se/ML/issues
 Imports: 
+    rlang (>= 1.0.1),
     bookdown (>= 0.24),
     cli (>= 3.2.0),
     crayon (>= 1.5.0),
     dplyr (>= 1.0.8),
     ggplot2 (>= 3.3.5),
-    keras (>= 2.8.0),
-    lifecycle,
-    parsnip (>= 0.1.7),
     Rcpp,
     recipes (>= 0.2.0),
-    rlang (>= 1.0.1),
     rsample (>= 0.1.1),
     tune (>= 0.1.6),
+    parsnip (>= 0.1.7),
+    workflowsets (>= 0.1.0),
     yardstick (>= 0.0.9)
 Suggests: 
+    lifecycle,
     rmarkdown,
     knitr,
     testthat (>= 3.0.0),
     covr,
-    spelling
+    spelling,
+    ranger (>= 0.13.1),
+    xgboost (>= 1.5.2.1),
+    baguette (>= 0.1.1),
+    rules (>= 0.1.2),
+    rpart (>= 4.1.16),
+    kknn (>= 1.3.1),
+    kernlab (>= 0.9.29),
+    earth (>= 5.3.1),
+    glmnet (>= 4.1.3),
+    keras (>= 2.8.0)
 SystemRequirements:
   Python (>= 2.7.0),
   TensorFlow (https://www.tensorflow.org/),
