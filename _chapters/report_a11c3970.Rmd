@@ -1,5 +1,5 @@
 
-# report_a11c3970
+# parameterized report
 
 This page depends on *parameters*, its content is **dynamic**, can be
 manipulated from `shiny`. It is built from a template in which

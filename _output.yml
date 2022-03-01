@@ -6,9 +6,4 @@ bookdown::bs4_book:
     edit: 
       link: https://github.com/D-Se/ML/edit/master/%s
       text: "Suggest an edit"
-  sharing:
-    github: yes
-    twitter: no
-    facebook: no
-    all: no
 documentclass: book

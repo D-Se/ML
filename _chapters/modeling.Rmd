@@ -1,0 +1,36 @@
+# (PART) Modeling {.unnumbered}
+
+# Models
+
+## xgboost
+
+Extreme gradient boosting.
+
+## MARS
+
+Multivariate adaptive regression spline.
+
+## CART
+
+Classification and regression tree.
+
+## Random Forest
+
+Random forest.
+
+## SVM
+
+Support vector machines.
+
+## KNN
+
+K-nearest neighbors.
+
+## Cubist
+
+Cubist is a rule-based model that is an extension of Quinlan's M5 model tree.
+
+## OLS
+
+Ordinary linear regression.
+

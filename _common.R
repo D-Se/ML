@@ -12,7 +12,6 @@ knitr::opts_chunk$set(
 #' #' Processing steps for chapter citation
 #' #' 
 #' #' @param 
-#' #' @export
 #' get_ch_authors <- function(chapter){
 #'   
 #' }
@@ -25,7 +24,6 @@ knitr::opts_chunk$set(
 #'
 #' @param pkgs character vector of packages
 #' @param caption possibly html / latex formatted character string
-#' @export
 #' @examples
 #' pkg_tabler(c("MASS", "keras"), "<b>Test</b>")
 pkg_tabler <- function(pkgs, caption = NULL) {

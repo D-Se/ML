@@ -39,7 +39,8 @@ tar_option_set(error = "continue", packages = c(
   "bookdown"
 ))
 
-tidymodels::tidymodels_prefer()
+### TODO: Does excluding this impact models?
+#tidymodels::tidymodels_prefer()
 
 list(
   ### TODO: data input step here
@@ -286,7 +287,8 @@ list(
       params = list(
         histogram = hist,
         model = fit,
-        title = as.character(tar_name())
+        #title = as.character(tar_name())
+        title = "parameterized report"
       ),
       output_file = as.character(tar_name()),
       output_dir = "_chapters") %>%

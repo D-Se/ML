@@ -1,7 +1,6 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # ML <img src="man/figures/logo.png" align="right" height="139" />
+
 
 <!-- badges: start -->
 
@@ -14,11 +13,6 @@ size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://gi
 [![DOI](https://zenodo.org/badge/461093163.svg)](https://zenodo.org/badge/latestdoi/461093163)
 <!-- badges: end -->
 
-<!--
-
-[![Codecov test coverage](https://codecov.io/gh/D-Se/ML/branch/master/graph/badge.svg)](https://app.codecov.io/gh/D-Se/ML?branch=master)
-
--->
 <center>
 
 *Sincerity with Aspiration, Perseverance with Integrity*
@@ -28,22 +22,6 @@ size](https://img.shields.io/github/languages/code-size/D-Se/ML.svg)](https://gi
 This repository contains analysis, utilities and workflows for the *NJU
 020205D17 Machine Learning* course.
 
-<style>
-
-div.green { background-color:#93ed99; border-radius: 5px; padding: 20px;}
-
-</style>
-
-<div class="green">
-
-<center>
-
-We are currently <B> recruiting! </B>
-
-</center>
-
-</div>
-
 ## Quick start
 
 To start modelling, use
@@ -52,18 +30,6 @@ To start modelling, use
 devtools::install_github("D-Se/ML")
 ```
 
-## Getting help
-
--   See `vignette("ML")` for an in-depth introduction of the course and
-    the team.
--   For team members, see `vignette("Onboarding")`.
--   See `vignette("Planning")` for planning and continuous integration
-    details.
-
 ## Project visualization
-
-    #> Registered S3 method overwritten by 'tune':
-    #>   method                   from   
-    #>   required_pkgs.model_spec parsnip
 
 <img src="man/figures/README-pipeline-1.png" width="100%" angle=90 style="display: block; margin: auto;" />

@@ -7,13 +7,14 @@
 #'   and the preprocessed test data.
 #' @param data An `rsplit` object.
 #'   with the training and test customer churn data.
+#'   @import recipes
 #' @export
 prepare_recipe <- function(data) {
   data |>
-    recipes::recipe(compressive_strength ~ .) |> 
-    recipes::step_center(all_predictors(), -recipes::all_outcomes()) |>
-    recipes::step_scale(all_predictors(), -recipes::all_outcomes()) |>
-    recipes::prep()
+    recipe(compressive_strength ~ .) |> 
+    step_center(all_predictors(), -all_outcomes()) |>
+    step_scale(all_predictors(), -all_outcomes()) |>
+    prep()
 }
 
 #' @title Define a Keras model.
@@ -27,9 +28,10 @@ prepare_recipe <- function(data) {
 #' @param act3 Activation function for layer 3.
 #' 
 #' @import keras 
+#' @import recipes
 #' @export
 define_model <- function(recipe, units1, units2, act1, act2, act3) {
-  input_shape <- ncol(recipes::juice(recipe, recipes::all_predictors(), composition = "matrix"))
+  input_shape <- ncol(juice(recipe, all_predictors(), composition = "matrix"))
   keras_model_sequential() |>
     layer_dense(
       units = units1,
