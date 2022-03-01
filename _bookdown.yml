@@ -8,8 +8,10 @@ language:
     
 rmd_files: [
   "index.Rmd",
-  "_chapters/introduction.Rmd",
   "_chapters/authors.Rmd",
+  
+  # introduction of the components in the project
+  "_chapters/introduction.Rmd",
   "_chapters/package_overview.Rmd",
   
   # Discuss aspects of data and expectations placed on them.
