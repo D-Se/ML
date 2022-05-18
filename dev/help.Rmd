@@ -149,7 +149,6 @@ An R package requires many different files in specific locations, for historical
 ├─ DESCRIPTION {`ML` package metadata.}  
 ├─ NAMESPACE {Control which functions are available to users who use `library("ML")`}  
 ├─ NEWS.md {Historical news of version releases}  
-├─ README.Rmd {R markdown-enabled package introduction. Can run R code within.}  
 ├─ README.md {Package introduction for *Github* first page introduction.}  
 ├─ R {All R code used in the `ML` package. Cannot contain subfolders.}  
 ├── data.R {Data sets available, created from the *_targets* directory. Edit with `usethis::use_data(object, overwrite = F)`.}  
