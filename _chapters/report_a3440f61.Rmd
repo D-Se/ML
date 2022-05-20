@@ -1,0 +1,28 @@
+
+# parameterized report
+
+This page depends on *parameters*, its content is **dynamic**, can be
+manipulated from `shiny`. It is built from a template in which
+parameters get inserted, then built.
+
+![](C:/Users/D/Documents/R/NJU/ML/_chapters/report_a3440f61_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+    ## 
+    ## Call:
+    ## lm(formula = Ozone ~ Wind + Temp, data = data)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -38.550 -13.998  -4.306  10.530 104.458 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) -41.2159    19.3090  -2.135   0.0344 *  
+    ## Wind         -2.5986     0.5543  -4.688 6.14e-06 ***
+    ## Temp          1.4024     0.2063   6.798 2.35e-10 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 21.4 on 150 degrees of freedom
+    ## Multiple R-squared:  0.451,  Adjusted R-squared:  0.4437 
+    ## F-statistic: 61.62 on 2 and 150 DF,  p-value: < 2.2e-16

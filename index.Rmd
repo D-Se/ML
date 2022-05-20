@@ -33,13 +33,53 @@ knitr::opts_chunk$set(
 
 The **ML Compendium** introduces a complete data analysis pipeline from obtaining, validating, transforming, visualizing, modeling and reporting data using modern machine learning approaches using R.  
 
+```{r autor_table, echo=FALSE}
+library(gt)
+
+authors <- tibble::tribble(
+  ~Name,          ~`Student nr`,  ~School,                  ~Signature,
+  "Donald",       "MG20145007", "Information Management", "Donald.png",
+  "Huang Yuqiao", "MG21150024", "Business",               "HuangYuQiao.png",
+  "Gu Rongna",    "DG21020005", "Business",               "GuRongNa.png",
+  "Ji Jie",       "DG21020010", "Business",               "JiJie.png",
+  "Wang Ying",    "DG21020042", "Business",               "WangYing.png"
+)
+
+authors |>
+  gt() |>
+  text_transform(
+    locations = cells_body(Signature),
+    fn = function(x) {
+      local_image(
+        filename = paste0("assets/images/sigs/", x),
+        height = 60
+      )
+    }
+  ) |>
+  tab_style(
+    location = cells_column_labels(),
+    style = list(
+      cell_borders(sides = "bottom", weight = px(3)),
+      cell_text(weight = "bold")
+    )
+  ) |>
+  cols_align("center") |>
+  cols_label(Signature = "") |>
+  tab_options(
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent"
+  )
+```
+
+
+
 ```{r, echo=FALSE, fig.cap="Compendium Outline", out.width = '100%', out.height="100%"}
 knitr::include_graphics("assets/images/project.png")
 ```
 
 
 
-The [source code](https://github.com/D-Se/ML) of this compendium is openly available! For questions, refer to [Github Discussions](https://github.com/D-Se/ML/discussions) or send an e-mail directly to the maintainer of `ML`, `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = " at: ")`.  
+The [source code](https://github.com/D-Se/ML) of this compendium is openly available! For questions, refer to [Github Discussions](https://github.com/D-Se/ML/discussions) or send an e-mail directly to the maintainer of `ML`, `r paste0(gsub("[<>]", "", strsplit(maintainer("ML"), "<")[[1]] |> trimws()), collapse = ", at: ")`.  
 
 
 <!---

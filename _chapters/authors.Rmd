@@ -1,29 +1,9 @@
 # About the Authors {#author .unnumbered}
 
-<center>
-
-This book, and the code it is built on, is the result of the hard work of many.
-
-</center>
-
-+---------------+------------------------+------------------------------------------------------------------------------------+
-| Name          | School                 | Responsibilities                                                                   |
-+:=============:+:======================:+:==================================================================================:+
-| Donald Seinen | Information Management | Project Management \| Quality Assurance \| Modelling \| Visualization \| Reporting |
-+---------------+------------------------+------------------------------------------------------------------------------------+
-| Huang Yuqiao  | Business               | ...                                                                                |
-+---------------+------------------------+------------------------------------------------------------------------------------+
-| Wang Ying     | Business               | ...                                                                                |
-+---------------+------------------------+------------------------------------------------------------------------------------+
-| Gu Rongna     | Business               | ...                                                                                |
-+---------------+------------------------+------------------------------------------------------------------------------------+
-| Ji Jie        | Business               | ...                                                                                |
-+---------------+------------------------+------------------------------------------------------------------------------------+
-
 ## Donald Seinen {.unnumbered}
 
 <center>
 
-Information has value and values contain information. I research the what & how, the why is to peddle it ergonomically. In my spare time I like solving [R problems](https://stackoverflow.com/users/14853907/donald-seinen) and playing chess, sometimes with [filming the ordeal](https://space.bilibili.com/611551632?spm_id_from=333.1007.0.0).
+Information has value and values contain information. I research the what & how, the why is to peddle it ergonomically. In my spare time I like solving [R problems](https://stackoverflow.com/users/14853907/donald-seinen) and playing chess. I have used R for roughly 2 years.
 
 </center>
